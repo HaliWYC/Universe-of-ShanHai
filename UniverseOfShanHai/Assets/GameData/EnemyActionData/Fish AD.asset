@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e6e59e841ea4e2c96c0df7572542ef, type: 3}
+  m_Name: Fish AD
+  m_EditorClassIdentifier: 
+  enemyActions:
+  - effect: {fileID: 11400000, guid: f2c5525805e0d44479bfbe3d56cedf5c, type: 2}
+    possibility: 0.6
+  - effect: {fileID: 11400000, guid: 9c5a0a15245784e95b234cb57f017732, type: 2}
+    possibility: 0.8
+  - effect: {fileID: 11400000, guid: e4c45cd9c84144ddabe18352349e7351, type: 2}
+    possibility: 0.6
+  - effect: {fileID: 11400000, guid: b0c730aaf53604965b5a2cb46d020822, type: 2}
+    possibility: 0.7

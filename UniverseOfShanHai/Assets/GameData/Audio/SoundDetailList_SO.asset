@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5420875f340348549d2ef2cb52d5383, type: 3}
+  m_Name: SoundDetailList_SO
+  m_EditorClassIdentifier: 
+  soundDetailsList:
+  - soundName: Index
+    audioClip: {fileID: 8300000, guid: 6bf5a61ee843544e4bdb634235244b76, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.7
+  - soundName: Map
+    audioClip: {fileID: 8300000, guid: 1733879e377fc428690457446b2bddfc, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: Guidance
+    audioClip: {fileID: 8300000, guid: defbee602786a4b638fab63c9af96f71, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: MiniorEnemy01
+    audioClip: {fileID: 8300000, guid: 60c861e285f71496ca9916ba116c8f5a, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: EliteEnemy01
+    audioClip: {fileID: 8300000, guid: cadbac70a1a27497e808227e822044a3, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: Treasure
+    audioClip: {fileID: 8300000, guid: f0d0314cd23c743dabfb986b929d5065, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: Shop
+    audioClip: {fileID: 8300000, guid: ac4fdb146cb9c4f208e8a59f6aa975b2, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: RestRoom
+    audioClip: {fileID: 8300000, guid: cfddc3893a1cc49a6a994257c73a8f4a, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: Boss01
+    audioClip: {fileID: 8300000, guid: 9a8d7af8f8ac04516b8eeefcbb7afc68, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.6
+  - soundName: sword_hit
+    audioClip: {fileID: 8300000, guid: 687c0349ef8e541429d3e81e88ee928c, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: defense
+    audioClip: {fileID: 8300000, guid: 927e257d826144e0e9b10268770df0a9, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.8
+  - soundName: healing
+    audioClip: {fileID: 8300000, guid: 720775795a3be42929fa84b595ae5315, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.8
+  - soundName: hammer
+    audioClip: {fileID: 8300000, guid: 44c91f0f20ae2417c8fa886d54645be4, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: mop
+    audioClip: {fileID: 8300000, guid: fc14bdbd364cb4c0aa8aac6b65b0f025, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: buff
+    audioClip: {fileID: 8300000, guid: 7f96bd9f986ea4aeaa1315b994e3d561, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: debuff
+    audioClip: {fileID: 8300000, guid: d9c1c020ea3184dd3a6b4fda1ec745e2, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: Eliminate
+    audioClip: {fileID: 8300000, guid: 9e76341696dc84799a53f26d9cddaf6c, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: drawCard
+    audioClip: {fileID: 8300000, guid: 97b052de4cb47458c85cba9186fac711, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: fishThrow
+    audioClip: {fileID: 8300000, guid: 8abd86120e74c468aaa35ca6a93c93be, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: Shuriken
+    audioClip: {fileID: 8300000, guid: 2dec2435753df4caf8579331be95f649, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1
+  - soundName: ZhuxianSwordFormation
+    audioClip: {fileID: 8300000, guid: 2dec2435753df4caf8579331be95f649, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 1

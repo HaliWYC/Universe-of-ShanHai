@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d804a99cf3dd42b4982ecc1dedafee0, type: 3}
+  m_Name: MiniorEnemy
+  m_EditorClassIdentifier: 
+  roomIcon: {fileID: 21300000, guid: e6eed6c2563884002ae7cb10446a7474, type: 3}
+  roomType: 2
+  rewardList:
+  - {fileID: 11400000, guid: e02e145cafd2b4689b6b4f3c5254af0b, type: 2}
+  - {fileID: 11400000, guid: ef78c3d690cbf4b579f0c983403a6c69, type: 2}
+  - {fileID: 11400000, guid: 71efd48b8e7bc4644840c9b45544f39f, type: 2}
+  - {fileID: 11400000, guid: c81f0b7542ef34f719a3750a7970bfc5, type: 2}
+  - {fileID: 11400000, guid: 2ae5f298c216c42ec9192d3c908cacf7, type: 2}
+  sceneToLoad:
+    m_AssetGUID: feb3645d4506f4de29329196752c5283
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

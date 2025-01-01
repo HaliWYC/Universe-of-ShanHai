@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84242c734f3c48cf9e1663e2b281063, type: 3}
+  m_Name: DebuffStrength
+  m_EditorClassIdentifier: 
+  effectIcon: {fileID: 21300000, guid: d7f03361f8c0a4e1293a0b3eb59d0320, type: 3}
+  value: 0.3
+  round: 2
+  description: Decrease damage value by 30%
+  effectDurationType: 1
+  targetType: 1
+  Positive: 0

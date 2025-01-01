@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993374532bc1d4fa58a32f87fd00d724, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  cardID: 1
+  cardName: Sword
+  cardImage: {fileID: -1414715644, guid: 4be2b2d44d250ee42b80cd311728b13a, type: 3}
+  cardCost: 1
+  cardType: 0
+  cardRarity: 0
+  cardTagList: 
+  cardDescription: Deal <color="Red">#6#</color> damages to an enemy
+  effectList:
+  - {fileID: 11400000, guid: 7a603c6b930fb402b97d81f0d5f92350, type: 2}

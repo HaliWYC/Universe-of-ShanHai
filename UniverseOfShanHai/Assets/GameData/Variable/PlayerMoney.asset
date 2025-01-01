@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd32a069081264574b01b45a386724f8, type: 3}
+  m_Name: PlayerMoney
+  m_EditorClassIdentifier: 
+  maxValue: 100000
+  currentValue: 0
+  ValueChangeEvent: {fileID: 11400000, guid: 6701139ed1a9d4eba87a67e30bd34551, type: 2}
+  description: "\u73A9\u5BB6\u8D27\u5E01"

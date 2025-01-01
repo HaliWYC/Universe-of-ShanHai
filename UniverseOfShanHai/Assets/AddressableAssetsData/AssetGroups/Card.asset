@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Card
+  m_EditorClassIdentifier: 
+  m_GroupName: Card
+  m_GUID: c8a763fb39b34448aa0cd33fb4de7729
+  m_SerializeEntries:
+  - m_GUID: 2ae5f298c216c42ec9192d3c908cacf7
+    m_Address: Defense
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 313b0b6eb73db4d0fa4b218705640463
+    m_Address: Rest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33a14761893894b32b444e17fc38ddc1
+    m_Address: "\u8BDB\u4ED9\u5251"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b33cd4554e264232881b25d851ce276
+    m_Address: Rune Axe
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71efd48b8e7bc4644840c9b45544f39f
+    m_Address: PowerHelmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c81f0b7542ef34f719a3750a7970bfc5
+    m_Address: Attack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e02e145cafd2b4689b6b4f3c5254af0b
+    m_Address: MagicScroll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef78c3d690cbf4b579f0c983403a6c69
+    m_Address: HealthPotion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bef992fba693643f7b99405888c499fd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 516fc2313fa3b43b4bc814724cee2256, type: 2}
+    - {fileID: 11400000, guid: 615b248ef4bd54166840d75ef1d06353, type: 2}

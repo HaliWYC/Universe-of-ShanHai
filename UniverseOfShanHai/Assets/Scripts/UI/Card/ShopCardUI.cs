@@ -1,0 +1,132 @@
+using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+{
+    [Header("Components")]
+    public CardDataSO cardData;
+    public Image cardSprite, cardRarity, cardBackground, cardType;
+    public TextMeshProUGUI cardName, costText, descriptionText, priceText, amountText;
+    public RectTransform tagContainer;
+    public GameObject tagPrefab;
+
+    public Color PriceColor;
+    public GameObject sellOut;
+    public RectTransform Parent;
+    public Vector3 originalPosition;
+    private int cardPrice;
+    private int CardAmount = 1;
+    public bool isSold = false;
+    public bool isMoving = false;
+    private void Awake()
+    {
+        originalPosition = transform.localScale;
+        sellOut.SetActive(false);
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (isSold || isMoving) return;
+        originalPosition = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isSold || isMoving) return;
+        transform.localScale = originalPosition;
+
+        UIPanel.Instance.cardToolTip.gameObject.SetActive(false);
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            UIPanel.Instance.ShowCardToolTip(cardData, transform, true);
+        }
+        if (isSold || isMoving) return;
+        if (eventData.clickCount % 2 == 0)
+        {
+            if (GameManager.Instance.player.characterData.Money >= cardPrice)
+            {
+                CardAmount--;
+                GameManager.Instance.player.characterData.Money -= cardPrice;
+                CardManager.Instance.UnlockCard(cardData);
+                UIPanel.Instance.UpdateCurrencyText();
+                UpdateAllCardUI();
+            }
+            if (CardAmount == 0)
+            {
+                isSold = true;
+                sellOut.SetActive(true);
+                cardBackground.color = new Color(Color.gray.r, Color.gray.g, Color.gray.b, 0.5f);
+                transform.localScale = originalPosition;
+            }
+        }
+    }
+
+    public void SetCardData(CardDataSO data)
+    {
+        cardData = data;
+        cardSprite.sprite = cardData.cardImage;
+        costText.text = cardData.cardCost.ToString();
+        cardPrice = Convert.ToInt32(CardManager.Instance.GetCardPrice(cardData) * (1 + UnityEngine.Random.Range(-0.1f, 0.1f)));
+        UpdateCardUI();
+        UpdateCardDescription();
+        cardName.text = cardData.cardName;
+        cardType.sprite = UIManager.Instance.GetSpriteByCardType(cardData.cardType);
+        cardRarity.color = UIManager.Instance.GetColorByCardRarity(cardData.cardRarity);
+        cardBackground.sprite = UIManager.Instance.GetSpriteByCardRarity(cardData.cardRarity);
+        SetUpTag();
+    }
+
+    public void UpdateCardDescription()
+    {
+        for (int j = 0; j < cardData.effectList.Count; j++)
+        {
+            cardData.effectList[j].UpdateUI();
+        }
+        string[] strings = cardData.cardDescription.Split("#");
+        int effectIndex = 0;
+        string returnString = "";
+        for (int i = 0; i < strings.Length; i++)
+        {
+            if (i % 2 == 1)
+            {
+                strings[i] = cardData.effectList[effectIndex].GetCurrentValue().ToString();
+            }
+            returnString += strings[i];
+        }
+        descriptionText.text = returnString;
+    }
+
+    public void UpdateAllCardUI()
+    {
+        for (int i = 0; i < Parent.childCount; i++)
+        {
+            Parent.GetChild(i).GetComponent<ShopCardUI>().UpdateCardUI();
+        }
+    }
+
+    public void UpdateCardUI()
+    {
+        priceText.text = cardPrice.ToString();
+        priceText.color = GameManager.Instance.player.characterData.Money > cardPrice ? PriceColor : Color.red;
+        amountText.text = "X" + CardAmount;
+    }
+
+    public void SetUpTag()
+    {
+        for (int i = 0; i < tagContainer.childCount; i++)
+        {
+            Destroy(tagContainer.GetChild(i).gameObject);
+        }
+        for (int i = 0; i < cardData.cardTagList.Count; i++)
+        {
+            var tag = Instantiate(tagPrefab, tagContainer).GetComponent<CardTag>();
+            tag.SetCardTag(cardData.cardTagList[i]);
+        }
+    }
+}

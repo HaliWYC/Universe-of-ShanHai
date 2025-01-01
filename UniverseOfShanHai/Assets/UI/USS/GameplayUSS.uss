@@ -1,0 +1,12 @@
+.turnbutton:hover {
+    scale: 1.1 1.1;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out-back;
+}
+
+.turnbutton {
+}
+
+.turnbutton:active {
+    scale: 1.2 1.2;
+}

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e6e59e841ea4e2c96c0df7572542ef, type: 3}
+  m_Name: Boss AD
+  m_EditorClassIdentifier: 
+  enemyActions:
+  - actionSprite: {fileID: 21300000, guid: a34550cedb3234dc085a67e7fb9bf5c8, type: 3}
+    effect: {fileID: 11400000, guid: 7b63d3a5973814cecb33833533462afd, type: 2}
+    possibility: 0.6
+  - actionSprite: {fileID: 21300000, guid: a34550cedb3234dc085a67e7fb9bf5c8, type: 3}
+    effect: {fileID: 11400000, guid: 0ba90f14bdae84d109de510080ac0679, type: 2}
+    possibility: 0.7
+  - actionSprite: {fileID: 21300000, guid: a34550cedb3234dc085a67e7fb9bf5c8, type: 3}
+    effect: {fileID: 11400000, guid: ffed4c015fb774b8b9674c92b2484ce5, type: 2}
+    possibility: 0.8
+  - actionSprite: {fileID: 21300000, guid: e60462361db3140c59c13b7122a2106c, type: 3}
+    effect: {fileID: 11400000, guid: 496ebb9279b7b4d2bbeb50bc8c42f54f, type: 2}
+    possibility: 0.6
+  - actionSprite: {fileID: 21300000, guid: e60462361db3140c59c13b7122a2106c, type: 3}
+    effect: {fileID: 11400000, guid: 022999934ce824d73b396a61d51149e4, type: 2}
+    possibility: 0.8
+  - actionSprite: {fileID: 21300000, guid: 98d622e3aaa3e464a933a2720153fdae, type: 3}
+    effect: {fileID: 11400000, guid: 0340284d7ea1a435d93e1d5b2e9e132a, type: 2}
+    possibility: 0.7
+  - actionSprite: {fileID: 21300000, guid: d7f03361f8c0a4e1293a0b3eb59d0320, type: 3}
+    effect: {fileID: 11400000, guid: 4707c0322b81641a79cfa56b6e9db4f3, type: 2}
+    possibility: 0.7
+  - actionSprite: {fileID: 21300000, guid: 810448b82870c45058f8b2de5423274a, type: 3}
+    effect: {fileID: 11400000, guid: 64b16abcf31834c47981b279a7851285, type: 2}
+    possibility: 0.6
+  - actionSprite: {fileID: 21300000, guid: 810448b82870c45058f8b2de5423274a, type: 3}
+    effect: {fileID: 11400000, guid: 5f8b3dd2fa8d643be9fea57f9115884d, type: 2}
+    possibility: 0.8

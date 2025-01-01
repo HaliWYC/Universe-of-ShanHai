@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993374532bc1d4fa58a32f87fd00d724, type: 3}
+  m_Name: "\u9677\u4ED9\u5251"
+  m_EditorClassIdentifier: 
+  cardID: 10
+  cardName: Xianxian Sword
+  cardImage: {fileID: 21300000, guid: fca2788492a84ae45866030c3072fa6c, type: 3}
+  cardCost: 7
+  cardType: 2
+  cardRarity: 4
+  cardTagList: 000000000500000006000000
+  cardDescription: Draw <color="Grey">3</color> cards, and add Juexian Sword to your
+    hand
+  effectList:
+  - {fileID: 11400000, guid: 793e3c39c71e14500bee926bfd29c45e, type: 2}
+  - {fileID: 11400000, guid: 9b92f0eb1ef5f4b53b237c0a6a5297d0, type: 2}
