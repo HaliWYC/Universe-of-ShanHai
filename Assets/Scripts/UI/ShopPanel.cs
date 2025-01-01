@@ -32,7 +32,7 @@ public class ShopPanel : MonoBehaviour
     {
         InitCardList();
         InitCards();
-        Instantiate(relicPrefab, RelicShopHolder);
+        //Instantiate(relicPrefab, RelicShopHolder);
     }
 
     private void OnDisable()
