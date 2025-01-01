@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfea9c2b644844ec7a99768055cd5ee4, type: 3}
   m_Name: Draw2CardEffect
   m_EditorClassIdentifier: 
-  effectIcon: {fileID: 0}
+  effectIcon: {fileID: 21300000, guid: fb6da40b2d8854b2baa37f6f0e9eb53e, type: 3}
   value: 2
   round: 1
   description: Draw two cards

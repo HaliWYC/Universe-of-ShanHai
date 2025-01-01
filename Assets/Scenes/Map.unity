@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821813848}
   - component: {fileID: 821813847}
+  - component: {fileID: 821813849}
   m_Layer: 0
   m_Name: Map Generator
   m_TagString: Untagged
@@ -152,7 +153,7 @@ MonoBehaviour:
   mapLayout: {fileID: 11400000, guid: 69afd34eac9814684afda9216de8892e, type: 2}
   roomPrefab: {fileID: 7403133001340723816, guid: 997cf63fa26fd4a109736074da65f0f3, type: 3}
   linePrefab: {fileID: 1063015386921166710, guid: 17e763de56d7e49eb915cda8a8a0c3ca, type: 3}
-  border: 1
+  border: 0.6
   roomDataList:
   - {fileID: 11400000, guid: 0e059c41bac1542279cb4d802242b4ac, type: 2}
   - {fileID: 11400000, guid: 3225dfcfe97e84afcacc7a83cb836d67, type: 2}
@@ -176,6 +177,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &821813849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821813846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c36b5854558549128a94e7b3076ca3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guid: 7659e969-b02c-469f-b806-ccb215e2fac3
 --- !u!1 &1900789137
 GameObject:
   m_ObjectHideFlags: 0

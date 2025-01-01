@@ -13,6 +13,8 @@ public class CharacterDataSO : ScriptableObject
     public float currentDefenseMultiplier;
     public float nextDefenseIncrement;
 
+    public List<Effect> buffList;
+
     public List<Relic> relics;
 
     [Header("Currency")]

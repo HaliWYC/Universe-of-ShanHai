@@ -77,7 +77,7 @@ public class TurnBaseManager : MonoBehaviour
             case RoomType.Guidance:
                 GameManager.Instance.player.gameObject.SetActive(true);
                 GameStart();
-                if (!GuidanceManager.Instance.isEnemyChecked)
+                if (!GuidanceManager.Instance.guidanceCheckList[3])
                     StartCoroutine(GuidanceManager.Instance.EnemyGuidance(5));
                 break;
             case RoomType.MiniorEnemy:
@@ -88,17 +88,17 @@ public class TurnBaseManager : MonoBehaviour
                 break;
             case RoomType.Shop:
                 GameManager.Instance.player.gameObject.SetActive(false);
-                if (!GuidanceManager.Instance.isShopChecked)
+                if (!GuidanceManager.Instance.guidanceCheckList[20])
                     StartCoroutine(GuidanceManager.Instance.ShopGuidance(8));
                 break;
             case RoomType.Treasure:
                 GameManager.Instance.player.gameObject.SetActive(false);
-                if (!GuidanceManager.Instance.isTreasureChecked)
+                if (!GuidanceManager.Instance.guidanceCheckList[19])
                     StartCoroutine(GuidanceManager.Instance.TreasureGuidance(5));
                 break;
             case RoomType.RestRoom:
                 GameManager.Instance.player.gameObject.SetActive(true);
-                if (!GuidanceManager.Instance.isRestRoomChecked)
+                if (!GuidanceManager.Instance.guidanceCheckList[21])
                     StartCoroutine(GuidanceManager.Instance.RestRoomGuidance(5));
                 GameManager.Instance.player.GetComponent<PlayerAnimation>().SetSleepAnimation();
                 break;

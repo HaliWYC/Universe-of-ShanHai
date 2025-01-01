@@ -223,7 +223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 100}
+  m_AnchoredPosition: {x: 140, y: 100}
   m_SizeDelta: {x: 340, y: 174.01001}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &52963395
@@ -1362,7 +1362,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: This is your current mana. You need mana to use the card. By starting at
-    3, you will receive an increament after two turns.
+    3, you will receive an increament after each two turns.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d67eee5757f634201ac086d867e4545c, type: 2}
   m_sharedMaterial: {fileID: -4082636398478697834, guid: d67eee5757f634201ac086d867e4545c, type: 2}
@@ -2953,7 +2953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 210, y: 320}
+  m_AnchoredPosition: {x: 140, y: 320}
   m_SizeDelta: {x: 240, y: 174.01}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &614113637
@@ -3810,7 +3810,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 140, y: 200}
   m_SizeDelta: {x: 240, y: 174.01}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &749469508
@@ -5340,8 +5340,8 @@ RectTransform:
   - {fileID: 2074676750}
   - {fileID: 792151833}
   - {fileID: 773825651}
-  - {fileID: 1285012415}
   - {fileID: 1694891259}
+  - {fileID: 1285012415}
   - {fileID: 899311809}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6275,6 +6275,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120231572}
   m_CullTransparentMesh: 1
+--- !u!1 &1132217309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132217310}
+  - component: {fileID: 1132217311}
+  m_Layer: 0
+  m_Name: SaveLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1132217310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132217309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132217311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132217309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644b6242a007545e58840c8868ef72d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1138436152
 GameObject:
   m_ObjectHideFlags: 0
@@ -7123,6 +7167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1212667729}
   - component: {fileID: 1212667730}
+  - component: {fileID: 1212667731}
   m_Layer: 0
   m_Name: Guidance Manager
   m_TagString: Untagged
@@ -7160,52 +7205,44 @@ MonoBehaviour:
   mask: {fileID: 2011512955}
   endTurnButton: {fileID: 1984478517}
   canvas: {fileID: 915422402}
-  welcome: {fileID: 4843907359480365010}
-  instruction: {fileID: 1869966785}
-  firstRoom: {fileID: 504355844}
-  enemy: {fileID: 1537893357}
-  playerHealthBar: {fileID: 400679177}
-  enemyHealthBar: {fileID: 969498577}
-  playerMana: {fileID: 614113635}
-  drawDeck: {fileID: 749469506}
-  discardDeck: {fileID: 52963393}
-  cardDeck: {fileID: 1730151303}
-  AttackCard: {fileID: 1895089763}
-  DefenseCard: {fileID: 994401680}
-  CardDetails: {fileID: 1170841299}
-  EnemyIntention: {fileID: 1568287689}
-  EndTurn: {fileID: 1047905185}
-  SelfAction: {fileID: 2003115589}
-  Victory: {fileID: 1599514713}
-  ChooseCard: {fileID: 2074676749}
-  SecondRoom: {fileID: 792151832}
-  RestRoom: {fileID: 773825650}
-  Shop: {fileID: 1694891258}
-  Treasure: {fileID: 1285012414}
-  Boss: {fileID: 899311808}
-  isWelcomeChecked: 0
-  isInstructionChecked: 0
-  isFirstRoomChecked: 0
-  isEnemyChecked: 0
-  isPlayerHealthBarChecked: 0
-  isEnemyHealthBarChecked: 0
-  isPlayerManaChecked: 0
-  isCardDeckChecked: 0
-  isDiscardDeckChecked: 0
-  isDrawDeckChecked: 0
-  isAttackCardChecked: 0
-  isDefenseCardChecked: 0
-  isCardDetailsChecked: 0
-  isEnemyIntentionChecked: 0
-  isTurnEndChecked: 0
-  isSelfActionChecked: 0
-  isVictoryChecked: 0
-  isChooseCardChecked: 0
-  isSecondRoomChecked: 0
-  isRestRoomChecked: 0
-  isShopChecked: 0
-  isTreasureChecked: 0
-  isBossChecked: 0
+  guidanceList:
+  - {fileID: 4843907359480365010}
+  - {fileID: 1869966785}
+  - {fileID: 504355844}
+  - {fileID: 1537893357}
+  - {fileID: 400679177}
+  - {fileID: 969498577}
+  - {fileID: 614113635}
+  - {fileID: 749469506}
+  - {fileID: 52963393}
+  - {fileID: 1730151303}
+  - {fileID: 1895089763}
+  - {fileID: 994401680}
+  - {fileID: 1170841299}
+  - {fileID: 1568287689}
+  - {fileID: 1047905185}
+  - {fileID: 2003115589}
+  - {fileID: 1599514713}
+  - {fileID: 2074676749}
+  - {fileID: 792151832}
+  - {fileID: 773825650}
+  - {fileID: 1694891258}
+  - {fileID: 1285012414}
+  - {fileID: 899311808}
+  guidanceCheckList: 0000000000000000000000000000000000000000000000
+--- !u!114 &1212667731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212667727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c36b5854558549128a94e7b3076ca3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guid: af396676-8fb9-4e59-b995-2539ee5b5c0c
 --- !u!1 &1219063858
 GameObject:
   m_ObjectHideFlags: 0
@@ -8773,6 +8810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1517894913}
   - component: {fileID: 1517894912}
+  - component: {fileID: 1517894914}
   m_Layer: 0
   m_Name: CardManager
   m_TagString: Untagged
@@ -8816,6 +8854,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517894914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517894911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c36b5854558549128a94e7b3076ca3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guid: fbb0a71d-144f-423b-8f31-cb3a27e31b95
 --- !u!1 &1537893357
 GameObject:
   m_ObjectHideFlags: 0
@@ -10169,6 +10220,7 @@ GameObject:
   - component: {fileID: 1637930228}
   - component: {fileID: 1637930230}
   - component: {fileID: 1637930231}
+  - component: {fileID: 1637930232}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10210,7 +10262,6 @@ MonoBehaviour:
   characterData: {fileID: 0}
   hp: {fileID: 11400000, guid: 02a537136a5584e68a1520be85399b43, type: 2}
   shield: {fileID: 11400000, guid: 731a86ec9ca854c4882724ba5668bc2f, type: 2}
-  buffList: []
   isDead: 0
   animatorSkillSpeed: 0
   healthBarController: {fileID: 0}
@@ -10515,6 +10566,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1637930232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637930218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c36b5854558549128a94e7b3076ca3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guid: ac12d32f-e076-46fe-9fb1-323e0ffac9bb
 --- !u!1 &1640803376
 GameObject:
   m_ObjectHideFlags: 0
@@ -10842,7 +10906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: -5}
   m_SizeDelta: {x: 1040, y: 148.01}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1694891260
@@ -15373,6 +15437,7 @@ SceneRoots:
   - {fileID: 1758659231}
   - {fileID: 1950815718}
   - {fileID: 1212667729}
+  - {fileID: 1132217310}
   - {fileID: 1629184134}
   - {fileID: 1780445461}
   - {fileID: 671605083}

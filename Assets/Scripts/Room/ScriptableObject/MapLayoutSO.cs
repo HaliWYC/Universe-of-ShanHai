@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MapLayoutSO", menuName = "Map/MapLayoutSO")]
-public class MapLayoutSO : ScriptableObject 
+public class MapLayoutSO : ScriptableObject
 {
+    public string ChapterName;
     public List<MapRoomData> mapRoomDataList = new();
     public List<LinePosition> linePositions = new();
 }
@@ -11,8 +12,8 @@ public class MapLayoutSO : ScriptableObject
 [System.Serializable]
 public class MapRoomData
 {
-    public float posX,posY;
-    public int row,column;
+    public float posX, posY;
+    public int row, column;
     public RoomDataSO roomData;
     public RoomState roomState;
     public List<Vector2Int> LinkTo;
@@ -21,5 +22,5 @@ public class MapRoomData
 [System.Serializable]
 public class LinePosition
 {
-    public SerializeVector3 startPos,endPos;
+    public SerializeVector3 startPos, endPos;
 }

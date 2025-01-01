@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab3444fe9ccc4bf99782e9a69217064, type: 3}
   m_Name: "\u6DFB\u52A0\u8BDB\u4ED9\u5251\u9635"
   m_EditorClassIdentifier: 
-  effectIcon: {fileID: 0}
+  effectIcon: {fileID: 21300000, guid: 56cdb01435272f64f923221450161d3b, type: 3}
   value: 1
   round: 1
+  description: 
   effectDurationType: 0
   targetType: 0
   cardList:

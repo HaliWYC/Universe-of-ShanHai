@@ -15,10 +15,10 @@ public class CharacterStateTip : MonoBehaviour
                 Destroy(stateHolder.GetChild(i).gameObject);
             }
         }
-        for (int i = 0; i < target.buffList.Count; i++)
+        for (int i = 0; i < target.characterData.buffList.Count; i++)
         {
             var state = Instantiate(statePrefab, stateHolder).GetComponent<CharacterStateSlot>();
-            state.SetState(target.buffList[i]);
+            state.SetState(target.characterData.buffList[i]);
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());

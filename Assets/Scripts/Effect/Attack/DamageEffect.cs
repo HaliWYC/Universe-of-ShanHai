@@ -31,7 +31,7 @@ public class DamageEffect : Effect
     }
     public void SetupRound(CharacterBase currentTarget)
     {
-        foreach (var buff in currentTarget.buffList)
+        foreach (var buff in currentTarget.characterData.buffList)
         {
             if (buff is DamageEffect effect && effect.value == value && effect.effectDurationType == EffectDurationType.Sustainable)
             {
@@ -43,7 +43,7 @@ public class DamageEffect : Effect
         }
         var damage = SetUpValue(CreateInstance<DamageEffect>());
         if (!IsOnceEffect(damage))
-            target.buffList.Add(damage);
+            target.characterData.buffList.Add(damage);
         damage.Execute(currentTarget);
     }
 

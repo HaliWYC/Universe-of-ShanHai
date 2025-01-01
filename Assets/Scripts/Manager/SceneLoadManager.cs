@@ -72,11 +72,11 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         currentScene = map;
         AudioManager.Instance.PlayGameSoundClip(AudioManager.Instance.soundDetailList.GetSoundDetails("Map"));
         RelicEvent.OnLoadMap();
-        if (!GuidanceManager.Instance.isWelcomeChecked)
+        if (!GuidanceManager.Instance.guidanceCheckList[0])
             GuidanceManager.Instance.StartGuidance();
         else
         {
-            if (!GuidanceManager.Instance.isSecondRoomChecked)
+            if (!GuidanceManager.Instance.guidanceCheckList[18])
                 StartCoroutine(GuidanceManager.Instance.NextRoomGuidance(5));
         }
         await LoadSceneTask();

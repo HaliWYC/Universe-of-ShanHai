@@ -32,7 +32,7 @@ public class GamePlayPanel : Singleton<GamePlayPanel>
     private void OnEndTurnButtonClick()
     {
         playerEndEvent.RaiseEvent(null, this);
-        if (!GuidanceManager.Instance.isSelfActionChecked)
+        if (!GuidanceManager.Instance.guidanceCheckList[15])
             StartCoroutine(GuidanceManager.Instance.SelfActionGuidance(4));
     }
 

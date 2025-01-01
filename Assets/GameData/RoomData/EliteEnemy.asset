@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomIcon: {fileID: 21300000, guid: a061c3a2654774fb68847ee59bdaede4, type: 3}
   roomType: 4
-  rewardList:
-  - {fileID: 11400000, guid: 313b0b6eb73db4d0fa4b218705640463, type: 2}
-  - {fileID: 11400000, guid: 6b33cd4554e264232881b25d851ce276, type: 2}
+  rarity: 6
+  rewardList: []
   sceneToLoad:
     m_AssetGUID: 36332c310c9304b928103e989bf74001
     m_SubObjectName: 

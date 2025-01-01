@@ -98,7 +98,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             if (i % 2 == 1)
             {
-                strings[i] = cardData.effectList[effectIndex].GetCurrentValue().ToString();
+                strings[i] = cardData.effectList[effectIndex].GetCurrentValue(cardData.effectList[effectIndex]).ToString();
             }
             returnString += strings[i];
         }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfea9c2b644844ec7a99768055cd5ee4, type: 3}
   m_Name: "\u9677\u4ED9\u5251"
   m_EditorClassIdentifier: 
-  effectIcon: {fileID: 0}
+  effectIcon: {fileID: 21300000, guid: fca2788492a84ae45866030c3072fa6c, type: 3}
   value: 3
   round: 1
+  description: 
   effectDurationType: 0
   targetType: 0
-  drawCardEvent: {fileID: 11400000, guid: be9e0e89eac3c408faefc860447b9f42, type: 2}

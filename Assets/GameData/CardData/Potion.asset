@@ -19,6 +19,6 @@ MonoBehaviour:
   cardType: 2
   cardRarity: 1
   cardTagList: 
-  cardDescription: Heals <color="green"> 3 </color> Health
+  cardDescription: Heals <color="green">#3#</color> Health
   effectList:
   - {fileID: 11400000, guid: 1afc0ed66262d48fcad409130bb03282, type: 2}

@@ -8,6 +8,7 @@ public abstract class Effect : ScriptableObject
     public float value;
     protected float currentValue;
     public int round;
+    [TextArea]
     public string description;
     public EffectDurationType effectDurationType;
     public EffectTargetType targetType;
@@ -43,8 +44,13 @@ public abstract class Effect : ScriptableObject
         return effect.effectDurationType == EffectDurationType.Once;
     }
 
-    public float GetCurrentValue()
+    public float GetCurrentValue(Effect effect)
     {
-        return currentValue;
+        return effect switch
+        {
+            StrengthEffect => effect.currentValue * 100,
+            ShieldEffect => effect.currentValue * 100,
+            _ => currentValue
+        };
     }
 }

@@ -19,6 +19,6 @@ MonoBehaviour:
   cardType: 2
   cardRarity: 1
   cardTagList: 
-  cardDescription: Increase Damage Value by <color="Yellow">30%</color>
+  cardDescription: Increase Damage Value by <color="Yellow">#30#%</color> 2 turns
   effectList:
   - {fileID: 11400000, guid: 77aae20ceff1842d7a8f366afafae136, type: 2}

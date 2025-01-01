@@ -23,7 +23,7 @@ public enum Rarity
 }
 
 [Flags]
-public enum ShopRarity
+public enum MultipleRarity
 {
     Normal = 1, Superior = 2, Elite = 4, Epic = 8, Legendary = 16, Mythical = 32
 }

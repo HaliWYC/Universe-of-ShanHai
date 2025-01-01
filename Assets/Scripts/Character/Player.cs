@@ -3,13 +3,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class Player : CharacterBase
+public class Player : CharacterBase, ISavable
 {
     public IntVariable playerMana;
     public int maxMana;
     private int manaIncrementCounter = 0;
 
     public int CurrentMana { get => playerMana.currentValue; set => playerMana.SetValue(value); }
+
+    public string GUID => GetComponent<DataGUID>().guid;
+
+    private void Start()
+    {
+        ISavable savable = this;
+        savable.RegisterSavable();
+    }
 
     public void NewTurn()
     {
@@ -34,5 +42,21 @@ public class Player : CharacterBase
     {
         manaIncrementCounter = 0;
         playerMana.maxValue = maxMana;
+    }
+
+    public GameSaveData GenerateSaveData()
+    {
+        GameSaveData saveData = new GameSaveData();
+        saveData.playerMana = playerMana.maxValue;
+        saveData.playerCurrentHealth = hp.currentValue;
+        saveData.currentPlayerData = characterData;
+        return saveData;
+    }
+
+    public void RestoreData(GameSaveData data)
+    {
+        playerMana.maxValue = data.playerMana;
+        hp.currentValue = data.playerCurrentHealth;
+        characterData = data.currentPlayerData;
     }
 }

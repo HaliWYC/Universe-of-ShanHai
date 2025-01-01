@@ -22,7 +22,7 @@ public class DefenseEffect : Effect
     }
     public void SetupRound(CharacterBase currentTarget)
     {
-        foreach (var buff in currentTarget.buffList)
+        foreach (var buff in currentTarget.characterData.buffList)
         {
             if (buff is DefenseEffect effect && effect.value == value && effect.effectDurationType == EffectDurationType.Sustainable)
             {
@@ -34,7 +34,7 @@ public class DefenseEffect : Effect
         }
         var defense = SetUpValue(CreateInstance<DefenseEffect>());
         if (!IsOnceEffect(defense))
-            currentTarget.buffList.Add(defense);
+            currentTarget.characterData.buffList.Add(defense);
         defense.Execute(currentTarget);
     }
 

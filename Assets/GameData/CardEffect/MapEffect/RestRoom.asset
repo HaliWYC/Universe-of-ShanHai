@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584b575abc07d4a85b813597bbf0d441, type: 3}
+  m_Script: {fileID: 11500000, guid: fc88b39397c0f4303b7cc0e775981603, type: 3}
   m_Name: RestRoom
   m_EditorClassIdentifier: 
-  effectIcon: {fileID: 0}
+  effectIcon: {fileID: 21300000, guid: 98d622e3aaa3e464a933a2720153fdae, type: 3}
   value: 20
   round: 1
-  description: Heals 20 health
+  description: RestRoom
   effectDurationType: 0
   targetType: 0

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c43ffd191694b6da39463f3bef5e3c, type: 3}
   m_Name: Player Hold Library
   m_EditorClassIdentifier: 
-  cardLibraryList: []
+  cardLibraryList:
+  - cardData: {fileID: 11400000, guid: c81f0b7542ef34f719a3750a7970bfc5, type: 2}
+    amount: 2
+  - cardData: {fileID: 11400000, guid: 2ae5f298c216c42ec9192d3c908cacf7, type: 2}
+    amount: 2

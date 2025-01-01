@@ -41,7 +41,7 @@ public class ShieldEffect : Effect
 
     public void SetupRound(CharacterBase currentTarget, bool isPositive)
     {
-        foreach (var buff in currentTarget.buffList)
+        foreach (var buff in currentTarget.characterData.buffList)
         {
             if (buff is ShieldEffect effect && effect.Positive == isPositive && effect.value == value && effect.effectDurationType == EffectDurationType.Sustainable)
             {
@@ -56,7 +56,7 @@ public class ShieldEffect : Effect
         }
         var Shield = SetUpValue(CreateInstance<ShieldEffect>());
         if (!IsOnceEffect(Shield))
-            currentTarget.buffList.Add(Shield);
+            currentTarget.characterData.buffList.Add(Shield);
 
         if (isPositive)
             currentTarget.characterData.currentDefenseMultiplier *= 1 + value;

@@ -22,7 +22,7 @@ public class HealEffect : Effect
 
     public void SetupRound(CharacterBase currentTarget)
     {
-        foreach (var buff in currentTarget.buffList)
+        foreach (var buff in currentTarget.characterData.buffList)
         {
             if (buff is HealEffect effect && effect.value == value && effect.effectDurationType == EffectDurationType.Sustainable)
             {
@@ -34,7 +34,7 @@ public class HealEffect : Effect
         }
         var Heal = SetUpValue(CreateInstance<HealEffect>());
         if (!IsOnceEffect(Heal))
-            currentTarget.buffList.Add(Heal);
+            currentTarget.characterData.buffList.Add(Heal);
         Heal.Execute(currentTarget);
     }
 

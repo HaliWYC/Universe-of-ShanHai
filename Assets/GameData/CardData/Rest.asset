@@ -19,6 +19,6 @@ MonoBehaviour:
   cardType: 2
   cardRarity: 2
   cardTagList: 
-  cardDescription: Draw <color="Grey">2</color> cards
+  cardDescription: Draw <color="Grey">#2#</color> cards
   effectList:
   - {fileID: 11400000, guid: 9de23685843a14752893a59af235ba4b, type: 2}

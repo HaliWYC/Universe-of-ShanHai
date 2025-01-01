@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -72,7 +73,7 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         cardData = data;
         cardSprite.sprite = cardData.cardImage;
         costText.text = cardData.cardCost.ToString();
-        cardPrice = Convert.ToInt32(CardManager.Instance.GetCardPrice(cardData) * (1 + UnityEngine.Random.Range(-0.1f, 0.1f)));
+        cardPrice = Convert.ToInt32(math.round(CardManager.Instance.GetCardPrice(cardData) * (1 + UnityEngine.Random.Range(-0.1f, 0.1f))));
         UpdateCardUI();
         UpdateCardDescription();
         cardName.text = cardData.cardName;
@@ -95,7 +96,7 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             if (i % 2 == 1)
             {
-                strings[i] = cardData.effectList[effectIndex].GetCurrentValue().ToString();
+                strings[i] = cardData.effectList[effectIndex].GetCurrentValue(cardData.effectList[effectIndex]).ToString();
             }
             returnString += strings[i];
         }

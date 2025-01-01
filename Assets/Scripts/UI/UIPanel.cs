@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
@@ -56,13 +57,35 @@ public class UIPanel : Singleton<UIPanel>
         }
     }
 
-    public void ShowRelicToolTip(Relic relicData, Transform relicUI)
+    public void ShowRelicToolTip(Relic relicData, Transform relicUI, bool isShop)
     {
         if (relicData != null)
         {
-            relicToolTip.GetComponent<RectTransform>().pivot = new Vector2(-0.1f, 1.2f);
-            relicToolTip.transform.position = relicUI.position + Vector3.up * 200;
+            if (!isShop)
+            {
+                relicToolTip.GetComponent<RectTransform>().pivot = new Vector2(-0.1f, 1.2f);
+                relicToolTip.transform.position = relicUI.position + Vector3.up * 200;
+            }
+            else
+            {
+                relicToolTip.GetComponent<RectTransform>().pivot = new Vector2(1f, 0f);
+                relicToolTip.transform.position = relicUI.position + Vector3.left * 100;
+            }
             relicToolTip.SetRelicData(relicData);
         }
+    }
+
+    public int GetRelicPriceByRarity(Rarity rarity)
+    {
+        return rarity switch
+        {
+            Rarity.Normal => 70,
+            Rarity.Superior => 140,
+            Rarity.Elite => 220,
+            Rarity.Epic => 350,
+            Rarity.Legendary => 500,
+            Rarity.Mythical => 800,
+            _ => 70
+        };
     }
 }

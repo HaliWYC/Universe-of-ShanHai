@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class CardManager : Singleton<CardManager>
+public class CardManager : Singleton<CardManager>//, ISavable
 {
     public List<CardDataSO> cardDataList;
     public List<CardDataSO> normalCardList;
@@ -17,6 +17,8 @@ public class CardManager : Singleton<CardManager>
     public CardLibrarySO newGameLibrary;
     public CardLibrarySO currentLibrary;
 
+    public string GUID => GetComponent<DataGUID>().guid;
+
     protected override void Awake()
     {
         base.Awake();
@@ -26,6 +28,12 @@ public class CardManager : Singleton<CardManager>
         {
             currentLibrary.cardLibraryList.Add(card);
         }
+    }
+
+    private void Start()
+    {
+        // ISavable savable = this;
+        // savable.RegisterSavable();
     }
     public void InitCardList()
     {
@@ -107,12 +115,12 @@ public class CardManager : Singleton<CardManager>
     {
         return cardData.cardRarity switch
         {
-            Rarity.Normal => 50,
-            Rarity.Superior => 100,
-            Rarity.Elite => 200,
-            Rarity.Epic => 500,
-            Rarity.Legendary => 700,
-            Rarity.Mythical => 1000,
+            Rarity.Normal => 25,
+            Rarity.Superior => 75,
+            Rarity.Elite => 120,
+            Rarity.Epic => 160,
+            Rarity.Legendary => 220,
+            Rarity.Mythical => 300,
             _ => 10
         };
     }
@@ -130,21 +138,45 @@ public class CardManager : Singleton<CardManager>
             _ => null,
         };
     }
-    // public int GetCardAmount(CardDataSO cardData)
-    // {
-    //     switch (cardData.cardRarity)
-    //     {
-    //         case Rarity.Normal:
-    //             return 3;
-    //         case Rarity.Superior:
-    //         case Rarity.Elite:
-    //             return 2;
-    //         case Rarity.Epic:
-    //         case Rarity.Legendary:
-    //         case Rarity.Mythical:
-    //             return 1;
-    //         default:
-    //             return 1;
-    //     }
-    // }
+    public List<CardDataSO> GetCardRarityList(MultipleRarity cardRarity)
+    {
+
+        return cardRarity switch
+        {
+            MultipleRarity.Normal => normalCardList,
+            MultipleRarity.Superior => superiorCardList,
+            MultipleRarity.Elite => eliteCardList,
+            MultipleRarity.Epic => epicCardList,
+            MultipleRarity.Legendary => legendaryCardList,
+            MultipleRarity.Mythical => mythicalCardList,
+            _ => cardDataList,
+        };
+    }
+
+    public GameSaveData GenerateSaveData()
+    {
+        // GameSaveData saveData = new GameSaveData();
+        // saveData.playerCurrentCardLibraries = currentLibrary;
+        return null;
+    }
+
+    public void RestoreData(GameSaveData data)
+    {
+        currentLibrary = data.playerCurrentCardLibraries;
+    }
+
+    public List<CardDataSO> GetCardListByMultipleRarity(MultipleRarity multipleRarity)
+    {
+        List<CardDataSO> cardList = new List<CardDataSO>();
+        string[] rarities = multipleRarity.ToString().Split(',');
+        for (int i = 0; i < rarities.Length; i++)
+        {
+            MultipleRarity cardRarity = (MultipleRarity)Enum.Parse(typeof(MultipleRarity), rarities[i]);
+            for (int c = 0; c < GetCardRarityList(cardRarity).Count; c++)
+            {
+                cardList.Add(GetCardRarityList(cardRarity)[c]);
+            }
+        }
+        return cardList;
+    }
 }

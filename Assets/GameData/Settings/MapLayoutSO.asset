@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781cff2df51704d1881ff1eda1bff9c6, type: 3}
   m_Name: MapLayoutSO
   m_EditorClassIdentifier: 
+  ChapterName: Dream
   mapRoomDataList: []
   linePositions:
   - startPos:

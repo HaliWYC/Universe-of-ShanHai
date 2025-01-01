@@ -57,7 +57,7 @@ public class StrengthEffect : Effect
 
     public void SetupRound(CharacterBase currentTarget, bool isPositive)
     {
-        foreach (var buff in currentTarget.buffList)
+        foreach (var buff in currentTarget.characterData.buffList)
         {
             if (buff is StrengthEffect effect && effect.Positive == isPositive && effect.value == value && effect.effectDurationType == EffectDurationType.Sustainable)
             {
@@ -73,7 +73,7 @@ public class StrengthEffect : Effect
         var Strength = SetUpValue(CreateInstance<StrengthEffect>());
 
         if (!IsOnceEffect(Strength))
-            currentTarget.buffList.Add(Strength);
+            currentTarget.characterData.buffList.Add(Strength);
         if (isPositive)
             currentTarget.characterData.currentAttackMultiplier *= 1 + value;
         else

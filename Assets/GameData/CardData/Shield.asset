@@ -19,6 +19,6 @@ MonoBehaviour:
   cardType: 1
   cardRarity: 0
   cardTagList: 
-  cardDescription: Gain <color="Blue"> 6 </color> armors
+  cardDescription: Gain <color="Blue">#6#</color> armors
   effectList:
   - {fileID: 11400000, guid: 589247e7c8ef0426682cc5abe44804f4, type: 2}

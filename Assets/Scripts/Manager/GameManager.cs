@@ -106,6 +106,16 @@ public class GameManager : Singleton<GameManager>
         if (Room.roomData.roomType == RoomType.Treasure)
             pickCardPanel.rewardList = new List<CardDataSO>(CardManager.Instance.cardDataList);
         else
-            pickCardPanel.rewardList = new List<CardDataSO>(Room.roomData.rewardList);
+        {
+            if (Room.roomData.rewardList.Count < 3)
+            {
+                pickCardPanel.rewardList = CardManager.Instance.GetCardListByMultipleRarity(Room.roomData.rarity);
+            }
+            else
+            {
+                pickCardPanel.rewardList = new List<CardDataSO>(Room.roomData.rewardList);
+            }
+        }
+
     }
 }

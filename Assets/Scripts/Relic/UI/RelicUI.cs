@@ -12,7 +12,7 @@ public class RelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            UIPanel.Instance.ShowRelicToolTip(relicData, transform);
+            UIPanel.Instance.ShowRelicToolTip(relicData, transform, false);
         }
     }
 

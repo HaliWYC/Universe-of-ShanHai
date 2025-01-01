@@ -28,7 +28,7 @@ MonoBehaviour:
     - CardData
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 33a14761893894b32b444e17fc38ddc1
-    m_Address: "\u8BDB\u4ED9\u5251"
+    m_Address: Zhuxian Sword
     m_ReadOnly: 0
     m_SerializedLabels:
     - CardData
@@ -41,6 +41,18 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 71efd48b8e7bc4644840c9b45544f39f
     m_Address: PowerHelmet
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9eff41d078f74bfba0b95e478522da2
+    m_Address: Mahogany Bow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CardData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac0fed14561e940c8a6ea425ee93633c
+    m_Address: Wind Bracer
     m_ReadOnly: 0
     m_SerializedLabels:
     - CardData

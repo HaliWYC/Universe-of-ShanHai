@@ -10,7 +10,7 @@ public class ShopPanel : MonoBehaviour
 
     public RectTransform CardShopHolder;
 
-    public ShopRarity shopRarity;
+    public MultipleRarity shopRarity;
 
     public List<CardDataSO> cardList = new();
     public Button backButton;
@@ -45,15 +45,7 @@ public class ShopPanel : MonoBehaviour
 
     private void InitCardList()
     {
-        string[] rarities = shopRarity.ToString().Split(',');
-        for (int i = 0; i < rarities.Length; i++)
-        {
-            Rarity cardRarity = (Rarity)Enum.Parse(typeof(ShopRarity), rarities[i]);
-            for (int c = 0; c < CardManager.Instance.GetCardRarityList(cardRarity).Count; c++)
-            {
-                cardList.Add(CardManager.Instance.GetCardRarityList(cardRarity)[c]);
-            }
-        }
+        cardList = CardManager.Instance.GetCardListByMultipleRarity(shopRarity);
     }
 
     private void InitCards()

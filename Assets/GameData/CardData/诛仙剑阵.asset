@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993374532bc1d4fa58a32f87fd00d724, type: 3}
   m_Name: "\u8BDB\u4ED9\u5251\u9635"
   m_EditorClassIdentifier: 
-  cardID: 8
+  cardID: 12
   cardName: Zhuxian Sword Formation
   cardImage: {fileID: 21300000, guid: 56cdb01435272f64f923221450161d3b, type: 3}
-  cardCost: 10
+  cardCost: 8
   cardType: 0
   cardRarity: 5
   cardTagList: 000000000500000006000000

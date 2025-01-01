@@ -98,16 +98,16 @@ public class HealthBarController : MonoBehaviour
             buffText.text = currentCharacter.shield.currentValue.ToString();
         }
         int numChild = buffContainer.childCount;
-        for (int i = 0; i < currentCharacter.buffList.Count; i++)
+        for (int i = 0; i < currentCharacter.characterData.buffList.Count; i++)
         {
             var buff = intentTemplate.Instantiate();
 
             buff.style.right = new StyleLength(new Length((numChild + i) * -60, LengthUnit.Pixel));
             buffContainer.Add(buff);
             var Buff = buff.Q<VisualElement>("Intent");
-            Buff.style.backgroundImage = new StyleBackground(currentCharacter.buffList[i].effectIcon);
+            Buff.style.backgroundImage = new StyleBackground(currentCharacter.characterData.buffList[i].effectIcon);
             var buffText = buff.Q<Label>("IntentText");
-            buffText.text = currentCharacter.buffList[i].effectDurationType == EffectDurationType.Sustainable ? currentCharacter.buffList[i].round.ToString() : currentCharacter.buffList[i].value.ToString();
+            buffText.text = currentCharacter.characterData.buffList[i].effectDurationType == EffectDurationType.Sustainable ? currentCharacter.characterData.buffList[i].round.ToString() : currentCharacter.characterData.buffList[i].value.ToString();
         }
         buffContainer.style.display = DisplayStyle.Flex;
     }

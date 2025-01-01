@@ -15,11 +15,11 @@ MonoBehaviour:
   cardID: 8
   cardName: Zhuxian Sword
   cardImage: {fileID: 21300000, guid: f171887fcfe56cf49b0b70acbcefdc88, type: 3}
-  cardCost: 5
+  cardCost: 4
   cardType: 0
   cardRarity: 4
   cardTagList: 06000000
-  cardDescription: Deal <color="Red">15</color> damages to an enemy, and add Luxian
+  cardDescription: Deal <color="Red">#15#</color> damages to an enemy, and add Luxian
     Sword to your hand
   effectList:
   - {fileID: 11400000, guid: 78a4321bd94ff4f51af617da048a0c77, type: 2}

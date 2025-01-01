@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24bfb2cfa70954b4090ec76bd7f983a2, type: 3}
   m_Name: "\u8BDB\u4ED9\u5251"
   m_EditorClassIdentifier: 
-  effectIcon: {fileID: 0}
+  effectIcon: {fileID: 21300000, guid: f171887fcfe56cf49b0b70acbcefdc88, type: 3}
   value: 15
   round: 1
+  description: 
   effectDurationType: 0
   targetType: 1

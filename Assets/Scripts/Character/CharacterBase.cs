@@ -9,7 +9,6 @@ public class CharacterBase : MonoBehaviour
     public IntVariable shield;
     public int CurrentHP { get => hp.currentValue; set => hp.SetValue(value); }
     public int MaxHP { get => hp.maxValue; }
-    public List<Effect> buffList = new();
 
     [Header("Bool")]
     public bool isDead;
@@ -41,7 +40,7 @@ public class CharacterBase : MonoBehaviour
         healthBarController.InitHealthBar();
         healthBarController.UpdateHealthBar();
         ResetShield();
-        buffList.Clear();
+        characterData.buffList.Clear();
         healthBarController.UpdateBuff();
         if (characterData != null)
         {
@@ -81,24 +80,24 @@ public class CharacterBase : MonoBehaviour
 
     public void UpdateBuffList()
     {
-        for (int i = 0; i < buffList.Count; i++)
+        for (int i = 0; i < characterData.buffList.Count; i++)
         {
-            switch (buffList[i].effectDurationType)
+            switch (characterData.buffList[i].effectDurationType)
             {
                 case EffectDurationType.Sustainable:
-                    buffList[i].round--;
-                    if (buffList[i].round <= 0)
+                    characterData.buffList[i].round--;
+                    if (characterData.buffList[i].round <= 0)
                     {
-                        buffList[i].End(this);
+                        characterData.buffList[i].End(this);
                         if (CompareTag("Enemy"))
                         {
                             GetComponent<Enemy>().healthBarController.UpdateIntentElement();
                         }
-                        buffList.RemoveAt(i);
+                        characterData.buffList.RemoveAt(i);
                         i--;
                         return;
                     }
-                    buffList[i].Execute(this);
+                    characterData.buffList[i].Execute(this);
                     if (CompareTag("Enemy"))
                     {
                         GetComponent<Enemy>().healthBarController.UpdateIntentElement();

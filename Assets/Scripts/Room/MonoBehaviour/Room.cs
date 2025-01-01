@@ -13,15 +13,15 @@ public class Room : MonoBehaviour
     [Header("Broadcast")]
     public ObjectEventSO loadRoomEvent;
 
-    public void Awake() 
+    public void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
-    private void OnMouseDown() 
+    private void OnMouseDown()
     {
         //Debug.Log("Room clicked"+roomData.roomType);
-        if(roomState==RoomState.Attainable)
-        loadRoomEvent.RaiseEvent(this,this);
+        if (roomState == RoomState.Attainable)
+            loadRoomEvent.RaiseEvent(this, this);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public class Room : MonoBehaviour
     /// <param name="row"></param>
     /// <param name="column"></param>
     /// <param name="roomData"></param>
-    public void SetupRoom(int row, int column,RoomDataSO roomData)
+    public void SetupRoom(int row, int column, RoomDataSO roomData)
     {
         this.row = row;
         this.column = column;

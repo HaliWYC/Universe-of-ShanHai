@@ -2,67 +2,30 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections;
-public class GuidanceManager : Singleton<GuidanceManager>
+using System.Collections.Generic;
+public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 {
     public GameObject mask;
     public Button endTurnButton;
     public RectTransform canvas;
-    public GameObject welcome;
-    public GameObject instruction;
-    public GameObject firstRoom;
-    public GameObject enemy;
-    public GameObject playerHealthBar;
-    public GameObject enemyHealthBar;
-    public GameObject playerMana;
-    public GameObject drawDeck;
-    public GameObject discardDeck;
-    public GameObject cardDeck;
-    public GameObject AttackCard;
-    public GameObject DefenseCard;
-    public GameObject CardDetails;
-    public GameObject EnemyIntention;
-    public GameObject EndTurn;
-    public GameObject SelfAction;
-    public GameObject Victory;
-    public GameObject ChooseCard;
-    public GameObject SecondRoom;
-    public GameObject RestRoom;
-    public GameObject Shop;
-    public GameObject Treasure;
-    public GameObject Boss;
-    public bool isWelcomeChecked = false;
-    public bool isInstructionChecked = false;
-    public bool isFirstRoomChecked = false;
-    public bool isEnemyChecked = false;
-    public bool isPlayerHealthBarChecked = false;
-    public bool isEnemyHealthBarChecked = false;
-    public bool isPlayerManaChecked = false;
-    public bool isCardDeckChecked = false;
-    public bool isDiscardDeckChecked = false;
-    public bool isDrawDeckChecked = false;
-    public bool isAttackCardChecked = false;
-    public bool isDefenseCardChecked = false;
-    public bool isCardDetailsChecked = false;
-    public bool isEnemyIntentionChecked = false;
-    public bool isTurnEndChecked = false;
-    public bool isSelfActionChecked = false;
-    public bool isVictoryChecked = false;
-    public bool isChooseCardChecked = false;
-    public bool isSecondRoomChecked = false;
-    public bool isRestRoomChecked = false;
-    public bool isShopChecked = false;
-    public bool isTreasureChecked = false;
-    public bool isBossChecked = false;
+
+    public List<GameObject> guidanceList = new List<GameObject>();
     private bool isEnterFirstRoom = false;
+
+    public List<bool> guidanceCheckList = new List<bool>();
 
     private float skipTime = 2f;
     private float currentSkipTime;
 
     private bool skipGuidance = false;
 
+    public string GUID => GetComponent<DataGUID>().guid;
+
     private void Start()
     {
         currentSkipTime = 0f;
+        ISavable savable = this;
+        savable.RegisterSavable();
     }
     private void Update()
     {
@@ -80,87 +43,49 @@ public class GuidanceManager : Singleton<GuidanceManager>
 
     public void StartGuidance()
     {
-        if (!isWelcomeChecked)
+        if (!guidanceCheckList[0])
             StartCoroutine(WelcomeGuidance(9));
     }
 
     public void SkipGuidance()
     {
         StopAllCoroutines();
-        isWelcomeChecked = true;
-        isInstructionChecked = true;
-        isFirstRoomChecked = true;
-        isEnemyChecked = true;
-        isPlayerHealthBarChecked = true;
-        isEnemyHealthBarChecked = true;
-        isPlayerManaChecked = true;
-        isCardDeckChecked = true;
-        isDiscardDeckChecked = true;
-        isDrawDeckChecked = true;
-        isAttackCardChecked = true;
-        isDefenseCardChecked = true;
-        isCardDetailsChecked = true;
-        isEnemyIntentionChecked = true;
-        isTurnEndChecked = true;
-        isSelfActionChecked = true;
-        isVictoryChecked = true;
-        isChooseCardChecked = true;
-        isSecondRoomChecked = true;
-        isRestRoomChecked = true;
-        isShopChecked = true;
-        isTreasureChecked = true;
-        isBossChecked = true;
+        for (int i = 0; i < guidanceCheckList.Count; i++)
+        {
+            guidanceCheckList[i] = true;
+        }
         isEnterFirstRoom = true;
         mask.SetActive(false);
         endTurnButton.interactable = true;
-        welcome.SetActive(false);
-        instruction.SetActive(false);
-        firstRoom.SetActive(false);
-        enemy.SetActive(false);
-        playerHealthBar.SetActive(false);
-        enemyHealthBar.SetActive(false);
-        playerMana.SetActive(false);
-        cardDeck.SetActive(false);
-        discardDeck.SetActive(false);
-        drawDeck.SetActive(false);
-        AttackCard.SetActive(false);
-        DefenseCard.SetActive(false);
-        CardDetails.SetActive(false);
-        EnemyIntention.SetActive(false);
-        EndTurn.SetActive(false);
-        SelfAction.SetActive(false);
-        Victory.SetActive(false);
-        ChooseCard.SetActive(false);
-        SecondRoom.SetActive(false);
-        RestRoom.SetActive(false);
-        Shop.SetActive(false);
-        Treasure.SetActive(false);
-        Boss.SetActive(false);
+        foreach (var item in guidanceList)
+        {
+            item.SetActive(false);
+        }
     }
 
     public IEnumerator WelcomeGuidance(float time)
     {
-        welcome.SetActive(true);
-        isWelcomeChecked = true;
+        guidanceList[0].SetActive(true);
+        guidanceCheckList[0] = true;
         yield return new WaitForSeconds(time);
-        if (!isInstructionChecked && !isEnterFirstRoom)
+        if (!guidanceCheckList[1] && !isEnterFirstRoom)
             StartCoroutine(InstructionGuidance(6));
     }
 
     public IEnumerator InstructionGuidance(float time)
     {
-        welcome.SetActive(false);
-        instruction.SetActive(true);
-        isInstructionChecked = true;
+        guidanceList[0].SetActive(false);
+        guidanceList[1].SetActive(true);
+        guidanceCheckList[1] = true;
         yield return new WaitForSeconds(time);
-        if (!isFirstRoomChecked && !isEnterFirstRoom)
+        if (!guidanceCheckList[2] && !isEnterFirstRoom)
             StartCoroutine(FirstRoomGuidance(5));
     }
     public IEnumerator FirstRoomGuidance(float time)
     {
-        instruction.SetActive(false);
-        firstRoom.SetActive(true);
-        isFirstRoomChecked = true;
+        guidanceList[1].SetActive(false);
+        guidanceList[2].SetActive(true);
+        guidanceCheckList[2] = true;
         yield return new WaitForSeconds(time);
     }
     public IEnumerator EnemyGuidance(float time)
@@ -168,176 +93,188 @@ public class GuidanceManager : Singleton<GuidanceManager>
         mask.SetActive(true);
         endTurnButton.interactable = false;
         isEnterFirstRoom = true;
-        welcome.SetActive(false);
-        instruction.SetActive(false);
-        firstRoom.SetActive(false);
-        enemy.SetActive(true);
-        isEnemyChecked = true;
+        guidanceList[0].SetActive(false);
+        guidanceList[1].SetActive(false);
+        guidanceList[2].SetActive(false);
+        guidanceList[3].SetActive(true);
+        guidanceCheckList[3] = true;
         yield return new WaitForSeconds(time);
-        if (!isPlayerHealthBarChecked)
+        if (!guidanceCheckList[4])
             StartCoroutine(PlayerHealthBarGuidance(5));
     }
     public IEnumerator PlayerHealthBarGuidance(float time)
     {
-        enemy.SetActive(false);
-        playerHealthBar.SetActive(true);
-        isPlayerHealthBarChecked = true;
+        guidanceList[3].SetActive(false);
+        guidanceList[4].SetActive(true);
+        guidanceCheckList[4] = true;
         yield return new WaitForSeconds(time);
-        if (!isEnemyHealthBarChecked)
+        if (!guidanceCheckList[5])
             StartCoroutine(EnemyHealthBarGuidance(4));
     }
     public IEnumerator EnemyHealthBarGuidance(float time)
     {
-        playerHealthBar.SetActive(false);
-        enemyHealthBar.SetActive(true);
-        isEnemyHealthBarChecked = true;
+        guidanceList[4].SetActive(false);
+        guidanceList[5].SetActive(true);
+        guidanceCheckList[5] = true;
         yield return new WaitForSeconds(time);
-        if (!isPlayerManaChecked)
+        if (!guidanceCheckList[6])
             StartCoroutine(PlayerManaGuidance(6));
     }
     public IEnumerator PlayerManaGuidance(float time)
     {
-        enemyHealthBar.SetActive(false);
-        playerMana.SetActive(true);
-        isPlayerManaChecked = true;
+        guidanceList[5].SetActive(false);
+        guidanceList[6].SetActive(true);
+        guidanceCheckList[6] = true;
         yield return new WaitForSeconds(time);
-        if (!isDrawDeckChecked)
+        if (!guidanceCheckList[7])
             StartCoroutine(DrawDeckGuidance(6));
     }
     public IEnumerator DrawDeckGuidance(float time)
     {
-        playerMana.SetActive(false);
-        drawDeck.SetActive(true);
-        isDrawDeckChecked = true;
+        guidanceList[6].SetActive(false);
+        guidanceList[7].SetActive(true);
+        guidanceCheckList[7] = true;
         yield return new WaitForSeconds(time);
-        if (!isDiscardDeckChecked)
+        if (!guidanceCheckList[8])
             StartCoroutine(DiscardDeckGuidance(9));
     }
     public IEnumerator DiscardDeckGuidance(float time)
     {
-        drawDeck.SetActive(false);
-        discardDeck.SetActive(true);
-        isDiscardDeckChecked = true;
+        guidanceList[7].SetActive(false);
+        guidanceList[8].SetActive(true);
+        guidanceCheckList[8] = true;
         yield return new WaitForSeconds(time);
-        if (!isCardDeckChecked)
+        if (!guidanceCheckList[9])
             StartCoroutine(CardDeckGuidance(6));
     }
 
     public IEnumerator CardDeckGuidance(float time)
     {
-        discardDeck.SetActive(false);
-        cardDeck.SetActive(true);
-        isCardDeckChecked = true;
+        guidanceList[8].SetActive(false);
+        guidanceList[9].SetActive(true);
+        guidanceCheckList[9] = true;
         yield return new WaitForSeconds(time);
-        if (!isAttackCardChecked)
+        if (!guidanceCheckList[10])
             StartCoroutine(AttackCardGuidance(8));
     }
     public IEnumerator AttackCardGuidance(float time)
     {
-        cardDeck.SetActive(false);
-        AttackCard.SetActive(true);
-        isAttackCardChecked = true;
+        guidanceList[9].SetActive(false);
+        guidanceList[10].SetActive(true);
+        guidanceCheckList[10] = true;
         yield return new WaitForSeconds(time);
-        if (!isDefenseCardChecked)
+        if (!guidanceCheckList[11])
             StartCoroutine(DefenseCardGuidance(8));
     }
     public IEnumerator DefenseCardGuidance(float time)
     {
-        AttackCard.SetActive(false);
-        DefenseCard.SetActive(true);
-        isDefenseCardChecked = true;
+        guidanceList[10].SetActive(false);
+        guidanceList[11].SetActive(true);
+        guidanceCheckList[11] = true;
         yield return new WaitForSeconds(time);
-        if (!isCardDetailsChecked)
+        if (!guidanceCheckList[12])
             StartCoroutine(CardDetailsGuidance(5));
         mask.SetActive(false);
     }
     public IEnumerator CardDetailsGuidance(float time)
     {
-        DefenseCard.SetActive(false);
-        CardDetails.SetActive(true);
-        isCardDetailsChecked = true;
+        guidanceList[11].SetActive(false);
+        guidanceList[12].SetActive(true);
+        guidanceCheckList[12] = true;
         yield return new WaitForSeconds(time);
-        if (!isEnemyIntentionChecked)
+        if (!guidanceCheckList[13])
             StartCoroutine(EnemyIntentionGuidance(8));
     }
 
     public IEnumerator EnemyIntentionGuidance(float time)
     {
-        CardDetails.SetActive(false);
-        EnemyIntention.SetActive(true);
-        isEnemyIntentionChecked = true;
+        guidanceList[12].SetActive(false);
+        guidanceList[13].SetActive(true);
+        guidanceCheckList[13] = true;
         yield return new WaitForSeconds(time);
-        if (!isTurnEndChecked)
+        if (!guidanceCheckList[14])
             StartCoroutine(TurnEndGuidance(5));
     }
     public IEnumerator TurnEndGuidance(float time)
     {
-        EnemyIntention.SetActive(false);
-        EndTurn.SetActive(true);
-        isTurnEndChecked = true;
+        guidanceList[13].SetActive(false);
+        guidanceList[14].SetActive(true);
+        guidanceCheckList[14] = true;
         yield return new WaitForSeconds(time);
-        EndTurn.SetActive(false);
+        guidanceList[14].SetActive(false);
         endTurnButton.interactable = true;
     }
     public IEnumerator SelfActionGuidance(float time)
     {
-        EndTurn.SetActive(false);
-        SelfAction.SetActive(true);
-        isSelfActionChecked = true;
+        guidanceList[14].SetActive(false);
+        guidanceList[15].SetActive(true);
+        guidanceCheckList[15] = true;
         yield return new WaitForSeconds(time);
-        SelfAction.SetActive(false);
+        guidanceList[15].SetActive(false);
     }
     public IEnumerator VictoryGuidance(float time)
     {
-        Victory.SetActive(true);
-        isVictoryChecked = true;
+        guidanceList[16].SetActive(true);
+        guidanceCheckList[16] = true;
         yield return new WaitForSeconds(time);
-        Victory.SetActive(false);
+        guidanceList[16].SetActive(false);
     }
     public IEnumerator ChooseCardGuidance(float time)
     {
-        ChooseCard.SetActive(true);
-        isChooseCardChecked = true;
+        guidanceList[17].SetActive(true);
+        guidanceCheckList[17] = true;
         yield return new WaitForSeconds(time);
-        ChooseCard.SetActive(false);
+        guidanceList[17].SetActive(false);
     }
 
     public IEnumerator NextRoomGuidance(float time)
     {
-        SecondRoom.SetActive(true);
-        isSecondRoomChecked = true;
+        guidanceList[18].SetActive(true);
+        guidanceCheckList[18] = true;
         yield return new WaitForSeconds(time);
-        SecondRoom.SetActive(false);
+        guidanceList[18].SetActive(false);
     }
 
     public IEnumerator TreasureGuidance(float time)
     {
-        Treasure.SetActive(true);
-        isTreasureChecked = true;
+        guidanceList[19].SetActive(true);
+        guidanceCheckList[19] = true;
         yield return new WaitForSeconds(time);
-        Treasure.SetActive(false);
+        guidanceList[19].SetActive(false);
     }
 
     public IEnumerator ShopGuidance(float time)
     {
-        Shop.SetActive(true);
-        isShopChecked = true;
+        guidanceList[20].SetActive(true);
+        guidanceCheckList[20] = true;
         yield return new WaitForSeconds(time);
-        Shop.SetActive(false);
+        guidanceList[20].SetActive(false);
     }
 
     public IEnumerator RestRoomGuidance(float time)
     {
-        RestRoom.SetActive(true);
-        isRestRoomChecked = true;
+        guidanceList[21].SetActive(true);
+        guidanceCheckList[21] = true;
         yield return new WaitForSeconds(time);
-        RestRoom.SetActive(false);
+        guidanceList[21].SetActive(false);
     }
     public IEnumerator BossRoomGuidance(float time)
     {
-        Boss.SetActive(true);
-        isBossChecked = true;
+        guidanceList[22].SetActive(true);
+        guidanceCheckList[22] = true;
         yield return new WaitForSeconds(time);
-        Boss.SetActive(false);
+        guidanceList[22].SetActive(false);
+    }
+
+    public GameSaveData GenerateSaveData()
+    {
+        GameSaveData saveData = new GameSaveData();
+        saveData.guidanceCheckList = guidanceCheckList;
+        return saveData;
+    }
+
+    public void RestoreData(GameSaveData data)
+    {
+        guidanceCheckList = data.guidanceCheckList;
     }
 }

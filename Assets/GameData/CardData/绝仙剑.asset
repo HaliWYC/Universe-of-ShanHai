@@ -15,12 +15,12 @@ MonoBehaviour:
   cardID: 11
   cardName: Juexian Sword
   cardImage: {fileID: 21300000, guid: 47a503ee9c0040b45ad2d15fb9fd4423, type: 3}
-  cardCost: 8
+  cardCost: 7
   cardType: 2
   cardRarity: 4
   cardTagList: 000000000500000006000000
-  cardDescription: Heal <color="Green">15</color> health, and add Zhuxian Sword Formation
-    to your hand
+  cardDescription: Heal <color="Green">#15#</color> health, and add Zhuxian Sword
+    Formation to your hand
   effectList:
   - {fileID: 11400000, guid: 7375080bf42574ad08f755d82cd6a8a3, type: 2}
   - {fileID: 11400000, guid: a6bfc5c58f6d94f80a51e27e79660884, type: 2}

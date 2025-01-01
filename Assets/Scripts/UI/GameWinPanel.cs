@@ -20,9 +20,9 @@ public class GameWinPanel : MonoBehaviour
         backToMapButton = rootElement.Q<Button>("backToMapButton");
         backToMapButton.clicked += OnBackToMapButtonClicked;
         pickCardButton.clicked += OnPickCardButtonClicked;
-        if (!GuidanceManager.Instance.isVictoryChecked)
+        if (!GuidanceManager.Instance.guidanceCheckList[16])
             StartCoroutine(GuidanceManager.Instance.VictoryGuidance(5));
-        if (!GuidanceManager.Instance.isChooseCardChecked)
+        if (!GuidanceManager.Instance.guidanceCheckList[17])
         {
             backToMapButton.style.display = DisplayStyle.None;
         }
@@ -35,7 +35,7 @@ public class GameWinPanel : MonoBehaviour
     private void OnPickCardButtonClicked()
     {
         pickCardEvent.RaiseEvent(null, this);
-        if (!GuidanceManager.Instance.isChooseCardChecked)
+        if (!GuidanceManager.Instance.guidanceCheckList[17])
         {
             StartCoroutine(GuidanceManager.Instance.ChooseCardGuidance(10));
             backToMapButton.style.display = DisplayStyle.Flex;
