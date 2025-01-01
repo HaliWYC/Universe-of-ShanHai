@@ -148,4 +148,17 @@ public class UIManager : Singleton<UIManager>
             _ => null,
         };
     }
+    public int GetRelicPriceByRarity(Rarity rarity)
+    {
+        return rarity switch
+        {
+            Rarity.Normal => 70,
+            Rarity.Superior => 140,
+            Rarity.Elite => 220,
+            Rarity.Epic => 350,
+            Rarity.Legendary => 500,
+            Rarity.Mythical => 800,
+            _ => 70
+        };
+    }
 }

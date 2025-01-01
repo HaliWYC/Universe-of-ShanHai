@@ -65,7 +65,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator WelcomeGuidance(float time)
     {
-        guidanceList[0].SetActive(true);
+        ClosePreviousGuidance(0);
         guidanceCheckList[0] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[1] && !isEnterFirstRoom)
@@ -74,8 +74,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator InstructionGuidance(float time)
     {
-        guidanceList[0].SetActive(false);
-        guidanceList[1].SetActive(true);
+        ClosePreviousGuidance(1);
         guidanceCheckList[1] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[2] && !isEnterFirstRoom)
@@ -83,8 +82,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator FirstRoomGuidance(float time)
     {
-        guidanceList[1].SetActive(false);
-        guidanceList[2].SetActive(true);
+        ClosePreviousGuidance(2);
         guidanceCheckList[2] = true;
         yield return new WaitForSeconds(time);
     }
@@ -93,10 +91,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
         mask.SetActive(true);
         endTurnButton.interactable = false;
         isEnterFirstRoom = true;
-        guidanceList[0].SetActive(false);
-        guidanceList[1].SetActive(false);
-        guidanceList[2].SetActive(false);
-        guidanceList[3].SetActive(true);
+        ClosePreviousGuidance(3);
         guidanceCheckList[3] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[4])
@@ -104,8 +99,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator PlayerHealthBarGuidance(float time)
     {
-        guidanceList[3].SetActive(false);
-        guidanceList[4].SetActive(true);
+        ClosePreviousGuidance(4);
         guidanceCheckList[4] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[5])
@@ -113,8 +107,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator EnemyHealthBarGuidance(float time)
     {
-        guidanceList[4].SetActive(false);
-        guidanceList[5].SetActive(true);
+        ClosePreviousGuidance(5);
         guidanceCheckList[5] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[6])
@@ -122,8 +115,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator PlayerManaGuidance(float time)
     {
-        guidanceList[5].SetActive(false);
-        guidanceList[6].SetActive(true);
+        ClosePreviousGuidance(6);
         guidanceCheckList[6] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[7])
@@ -131,8 +123,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator DrawDeckGuidance(float time)
     {
-        guidanceList[6].SetActive(false);
-        guidanceList[7].SetActive(true);
+        ClosePreviousGuidance(7);
         guidanceCheckList[7] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[8])
@@ -140,8 +131,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator DiscardDeckGuidance(float time)
     {
-        guidanceList[7].SetActive(false);
-        guidanceList[8].SetActive(true);
+        ClosePreviousGuidance(8);
         guidanceCheckList[8] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[9])
@@ -150,8 +140,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator CardDeckGuidance(float time)
     {
-        guidanceList[8].SetActive(false);
-        guidanceList[9].SetActive(true);
+        ClosePreviousGuidance(9);
         guidanceCheckList[9] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[10])
@@ -159,8 +148,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator AttackCardGuidance(float time)
     {
-        guidanceList[9].SetActive(false);
-        guidanceList[10].SetActive(true);
+        ClosePreviousGuidance(10);
         guidanceCheckList[10] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[11])
@@ -168,8 +156,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator DefenseCardGuidance(float time)
     {
-        guidanceList[10].SetActive(false);
-        guidanceList[11].SetActive(true);
+        ClosePreviousGuidance(11);
         guidanceCheckList[11] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[12])
@@ -178,8 +165,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator CardDetailsGuidance(float time)
     {
-        guidanceList[11].SetActive(false);
-        guidanceList[12].SetActive(true);
+        ClosePreviousGuidance(12);
         guidanceCheckList[12] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[13])
@@ -188,8 +174,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator EnemyIntentionGuidance(float time)
     {
-        guidanceList[12].SetActive(false);
-        guidanceList[13].SetActive(true);
+        ClosePreviousGuidance(13);
         guidanceCheckList[13] = true;
         yield return new WaitForSeconds(time);
         if (!guidanceCheckList[14])
@@ -197,8 +182,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator TurnEndGuidance(float time)
     {
-        guidanceList[13].SetActive(false);
-        guidanceList[14].SetActive(true);
+        ClosePreviousGuidance(14);
         guidanceCheckList[14] = true;
         yield return new WaitForSeconds(time);
         guidanceList[14].SetActive(false);
@@ -206,22 +190,21 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
     }
     public IEnumerator SelfActionGuidance(float time)
     {
-        guidanceList[14].SetActive(false);
-        guidanceList[15].SetActive(true);
+        ClosePreviousGuidance(15);
         guidanceCheckList[15] = true;
         yield return new WaitForSeconds(time);
         guidanceList[15].SetActive(false);
     }
     public IEnumerator VictoryGuidance(float time)
     {
-        guidanceList[16].SetActive(true);
+        ClosePreviousGuidance(16);
         guidanceCheckList[16] = true;
         yield return new WaitForSeconds(time);
         guidanceList[16].SetActive(false);
     }
     public IEnumerator ChooseCardGuidance(float time)
     {
-        guidanceList[17].SetActive(true);
+        ClosePreviousGuidance(17);
         guidanceCheckList[17] = true;
         yield return new WaitForSeconds(time);
         guidanceList[17].SetActive(false);
@@ -229,7 +212,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator NextRoomGuidance(float time)
     {
-        guidanceList[18].SetActive(true);
+        ClosePreviousGuidance(18);
         guidanceCheckList[18] = true;
         yield return new WaitForSeconds(time);
         guidanceList[18].SetActive(false);
@@ -237,7 +220,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator TreasureGuidance(float time)
     {
-        guidanceList[19].SetActive(true);
+        ClosePreviousGuidance(19);
         guidanceCheckList[19] = true;
         yield return new WaitForSeconds(time);
         guidanceList[19].SetActive(false);
@@ -245,7 +228,7 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator ShopGuidance(float time)
     {
-        guidanceList[20].SetActive(true);
+        ClosePreviousGuidance(20);
         guidanceCheckList[20] = true;
         yield return new WaitForSeconds(time);
         guidanceList[20].SetActive(false);
@@ -253,17 +236,26 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
 
     public IEnumerator RestRoomGuidance(float time)
     {
-        guidanceList[21].SetActive(true);
+        ClosePreviousGuidance(21);
         guidanceCheckList[21] = true;
         yield return new WaitForSeconds(time);
         guidanceList[21].SetActive(false);
     }
     public IEnumerator BossRoomGuidance(float time)
     {
-        guidanceList[22].SetActive(true);
+        ClosePreviousGuidance(22);
         guidanceCheckList[22] = true;
         yield return new WaitForSeconds(time);
         guidanceList[22].SetActive(false);
+    }
+
+    private void ClosePreviousGuidance(int index)
+    {
+        for (int i = 0; i < index; i++)
+        {
+            guidanceList[i].SetActive(false);
+        }
+        guidanceList[index].SetActive(true);
     }
 
     public GameSaveData GenerateSaveData()

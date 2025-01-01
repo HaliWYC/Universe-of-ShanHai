@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Wind Bracer
   cardImage: {fileID: 21300000, guid: 441409ba8db81a144ae677bb1df63f08, type: 3}
   cardCost: 2
-  cardType: 0
+  cardType: 2
   cardRarity: 2
   cardTagList: 
   cardDescription: Increase shield gaining by  <color="Grey">#30#%</color> 2 turns

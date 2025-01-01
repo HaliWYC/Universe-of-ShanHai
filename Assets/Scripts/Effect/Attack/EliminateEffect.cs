@@ -15,7 +15,6 @@ public class EliminateEffect : Effect
     {
         PoolTool.Instance.InitSoundEffect(AudioManager.Instance.soundDetailList.GetSoundDetails("Eliminate"));
         target.TakeDamage(99999);
-        GamePlayPanel.Instance.PopText(currentTarget.transform.position, 99999, this);
     }
     public override void End(CharacterBase currentTarget)
     {

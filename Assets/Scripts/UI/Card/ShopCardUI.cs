@@ -96,6 +96,8 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             if (i % 2 == 1)
             {
+                while (effectIndex < cardData.effectList.Count && cardData.effectList[effectIndex] is AddCardToHandEffect)
+                    effectIndex++;
                 strings[i] = cardData.effectList[effectIndex].GetCurrentValue(cardData.effectList[effectIndex]).ToString();
             }
             returnString += strings[i];

@@ -25,6 +25,6 @@ public class ShopRelicUI : MonoBehaviour
     {
         relicData = relic;
         relicIcon.sprite = relic.relicIcon;
-        price.text = UIPanel.Instance.GetRelicPriceByRarity(relicData.relicRarity).ToString();
+        price.text = UIManager.Instance.GetRelicPriceByRarity(relicData.relicRarity).ToString();
     }
 }

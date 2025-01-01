@@ -19,7 +19,7 @@ MonoBehaviour:
   cardType: 1
   cardRarity: 4
   cardTagList: 000000000500000006000000
-  cardDescription: Gain <color="Blue">#15#</color> armors, and add Xianxian Sword
+  cardDescription: Gain <color="Blue">#100#</color> armors, and add Xianxian Sword
     to your hand
   effectList:
   - {fileID: 11400000, guid: 041a7c06faf2c4a12bcea8e1a1064059, type: 2}

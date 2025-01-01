@@ -95,8 +95,8 @@ public class GameManager : Singleton<GameManager>
         newGameEvent.RaiseEvent(null, this);
         aliveEnemyList.Clear();
         //FIXME: 初始化玩家数据
-        player.templateCharacterData.Money = 0;
-        UIPanel.Instance.currencyText.text = player.templateCharacterData.Money.ToString();
+        if (player.characterData != null)
+            UIPanel.Instance.currencyText.text = player.characterData.Money.ToString();
     }
 
     public void InitRewardList(object obj)

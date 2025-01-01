@@ -53,6 +53,8 @@ public class StrengthEffect : Effect
             else
                 math.round(currentTarget.characterData.currentAttackMultiplier /= 1 - value);
         }
+        if (currentTarget.CompareTag("Enemy"))
+            currentTarget.healthBarController.UpdateIntentElement();
     }
 
     public void SetupRound(CharacterBase currentTarget, bool isPositive)
@@ -77,7 +79,7 @@ public class StrengthEffect : Effect
         if (isPositive)
             currentTarget.characterData.currentAttackMultiplier *= 1 + value;
         else
-            currentTarget.characterData.currentAttackMultiplier /= 1 + value;
+            currentTarget.characterData.currentAttackMultiplier *= 1 - value;
         Strength.Execute(currentTarget);
     }
     private StrengthEffect SetUpValue(StrengthEffect effect)
