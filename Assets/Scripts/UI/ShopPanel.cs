@@ -7,14 +7,17 @@ using DG.Tweening;
 public class ShopPanel : MonoBehaviour
 {
     public GameObject CardPrefab;
+    public GameObject relicPrefab;
 
     public RectTransform CardShopHolder;
+    public RectTransform RelicShopHolder;
 
     private List<CardDataSO> waitingCardList = new();
 
     public MultipleRarity shopRarity;
 
     public List<CardDataSO> cardList = new();
+    public List<Relic> relicList = new();
     public Button backButton;
     public ObjectEventSO loadMapEvent;
     public int numOfCard = 8;
@@ -29,15 +32,22 @@ public class ShopPanel : MonoBehaviour
     {
         InitCardList();
         InitCards();
+        Instantiate(relicPrefab, RelicShopHolder);
     }
 
     private void OnDisable()
     {
         cardList.Clear();
+        relicList.Clear();
         for (int i = 0; i < CardShopHolder.childCount; i++)
         {
             Destroy(CardShopHolder.GetChild(i).gameObject);
         }
+        for (int i = 0; i < RelicShopHolder.childCount; i++)
+        {
+            Destroy(RelicShopHolder.GetChild(i).gameObject);
+        }
+
     }
 
     private void BackToMap()

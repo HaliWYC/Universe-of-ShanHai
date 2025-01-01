@@ -10,8 +10,10 @@ public class ShopRelicUI : MonoBehaviour
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("1");
         if (eventData.button == PointerEventData.InputButton.Right)
         {
+            Debug.Log("2");
             UIPanel.Instance.ShowRelicToolTip(relicData, transform, true);
         }
     }
