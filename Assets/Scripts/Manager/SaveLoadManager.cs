@@ -17,17 +17,6 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         jsonFolder = Application.persistentDataPath + "/SAVE DATA/";
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Save(currentIndex);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Load(currentIndex);
-        }
-    }
     public void RegisterSavable(ISavable savable)
     {
         if (!savableList.Contains(savable))
@@ -45,7 +34,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
         var resultPath = jsonFolder + "data" + index + ".json";
 
-        var jsonData = JsonConvert.SerializeObject(dataSlots[index], Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+        var jsonData = JsonConvert.SerializeObject(dataSlots[index], Formatting.Indented);
 
         if (!File.Exists(resultPath))
         {
@@ -69,5 +58,6 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
             }
         }
     }
+
 
 }

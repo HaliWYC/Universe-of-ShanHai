@@ -155,8 +155,8 @@ public class CardManager : Singleton<CardManager>//, ISavable
 
     public GameSaveData GenerateSaveData()
     {
-        // GameSaveData saveData = new GameSaveData();
-        // saveData.playerCurrentCardLibraries = currentLibrary;
+        GameSaveData saveData = new GameSaveData();
+        saveData.playerCurrentCardLibraries = currentLibrary;
         return null;
     }
 
