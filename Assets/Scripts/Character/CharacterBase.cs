@@ -93,15 +93,26 @@ public class CharacterBase : MonoBehaviour
                         {
                             GetComponent<Enemy>().healthBarController.UpdateIntentElement();
                         }
+                        if (CompareTag("Player"))
+                        {
+                            CardDeck.Instance.UpdateCardUI();
+                        }
                         characterData.buffList.RemoveAt(i);
                         i--;
-                        return;
+                        break;
                     }
                     characterData.buffList[i].Execute(this);
                     if (CompareTag("Enemy"))
                     {
                         GetComponent<Enemy>().healthBarController.UpdateIntentElement();
+                        break;
                     }
+                    if (CompareTag("Player"))
+                    {
+                        CardDeck.Instance.UpdateCardUI();
+                    }
+                    break;
+                case EffectDurationType.Permanent:
                     break;
             }
         }

@@ -28,7 +28,7 @@ public class CardToolTip : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void UpdateCardDescription()
+    public void UpdateCardDescription()
     {
         for (int j = 0; j < cardData.effectList.Count; j++)
         {
@@ -41,12 +41,15 @@ public class CardToolTip : MonoBehaviour
         {
             if (i % 2 == 1)
             {
+                while (effectIndex < cardData.effectList.Count && cardData.effectList[effectIndex] is AddCardToHandEffect)
+                    effectIndex++;
                 strings[i] = cardData.effectList[effectIndex].GetCurrentValue(cardData.effectList[effectIndex]).ToString();
             }
             returnString += strings[i];
         }
         cardDescription.text = returnString;
     }
+
 
     public void SetUpTag()
     {
