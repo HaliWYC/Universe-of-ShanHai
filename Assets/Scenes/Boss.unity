@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -301,10 +302,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2983650045697109870, guid: 54f829220bb1440789b30283d2288f26, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6037657911861096268, guid: 54f829220bb1440789b30283d2288f26, type: 3}
     - target: {fileID: 3172555506626974822, guid: 54f829220bb1440789b30283d2288f26, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5965850860767137304, guid: 54f829220bb1440789b30283d2288f26, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3205875519195053612, guid: 54f829220bb1440789b30283d2288f26, type: 3}
     - target: {fileID: 6377272964079465208, guid: 54f829220bb1440789b30283d2288f26, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.4

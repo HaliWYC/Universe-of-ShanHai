@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -217,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minior Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1062619573217648559, guid: c95780d87bf6c4788b05a2f5f23b5c28, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6037657911861096268, guid: c95780d87bf6c4788b05a2f5f23b5c28, type: 3}
     - target: {fileID: 1082238473641052427, guid: c95780d87bf6c4788b05a2f5f23b5c28, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.4
@@ -261,6 +266,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6459511930025636263, guid: c95780d87bf6c4788b05a2f5f23b5c28, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3205875519195053612, guid: c95780d87bf6c4788b05a2f5f23b5c28, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
