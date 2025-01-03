@@ -76,11 +76,16 @@ public class StrengthEffect : Effect
 
         if (!IsOnceEffect(Strength))
             currentTarget.characterData.buffList.Add(Strength);
+
         if (isPositive)
             currentTarget.characterData.currentAttackMultiplier *= 1 + value;
         else
             currentTarget.characterData.currentAttackMultiplier *= 1 - value;
         Strength.Execute(currentTarget);
+        if (!GuidanceManager.Instance.guidanceCheckList[23])
+        {
+            GuidanceManager.Instance.StartCharacterStateDetailsGuidance();
+        }
     }
     private StrengthEffect SetUpValue(StrengthEffect effect)
     {

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c84242c734f3c48cf9e1663e2b281063, type: 3}
-  m_Name: DebuffStrength
+  m_Name: BuffStrength 0.5 2
   m_EditorClassIdentifier: 
-  effectIcon: {fileID: 21300000, guid: d7f03361f8c0a4e1293a0b3eb59d0320, type: 3}
-  value: 0.3
+  effectIcon: {fileID: 21300000, guid: 810448b82870c45058f8b2de5423274a, type: 3}
+  value: 0.5
   round: 2
-  description: Decrease damage value by 30%
+  description: Increase Damage Value by <color="Yellow">#50#%</color>
   effectDurationType: 1
-  targetType: 1
-  Positive: 0
+  targetType: 0
+  Positive: 1

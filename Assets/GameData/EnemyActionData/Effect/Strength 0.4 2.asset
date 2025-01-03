@@ -15,6 +15,7 @@ MonoBehaviour:
   effectIcon: {fileID: 21300000, guid: 810448b82870c45058f8b2de5423274a, type: 3}
   value: 0.4
   round: 2
+  description: Increase Damage Value by <color="Yellow">#40#%</color>
   effectDurationType: 1
   targetType: 0
   Positive: 1

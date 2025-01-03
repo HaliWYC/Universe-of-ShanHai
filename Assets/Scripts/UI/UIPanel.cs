@@ -74,4 +74,21 @@ public class UIPanel : Singleton<UIPanel>
             relicToolTip.SetRelicData(relicData);
         }
     }
+
+    public void ShowCharacterStateToolTip(CharacterBase character, Transform characterUI)
+    {
+        if (character.CompareTag("Player"))
+        {
+            characterStateTip.GetComponent<RectTransform>().pivot = new Vector2(-0.2f, 0f);
+            characterStateTip.transform.position = Camera.main.WorldToScreenPoint(characterUI.position) + Vector3.up * 50;
+            characterStateTip.SetCharacterStateTip(character.characterData);
+            return;
+        }
+        if (character.CompareTag("Enemy"))
+        {
+            characterStateTip.GetComponent<RectTransform>().pivot = new Vector2(1.3f, 0f);
+            characterStateTip.transform.position = Camera.main.WorldToScreenPoint(characterUI.position) + Vector3.up * 50;
+            characterStateTip.SetCharacterStateTip(character.characterData);
+        }
+    }
 }

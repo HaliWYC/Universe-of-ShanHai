@@ -46,10 +46,11 @@ public abstract class Effect : ScriptableObject
 
     public float GetCurrentValue(Effect effect)
     {
+        float currentValue = effect.currentValue == 0 ? effect.value : effect.currentValue;
         return effect switch
         {
-            StrengthEffect => effect.currentValue * 100,
-            ShieldEffect => effect.currentValue * 100,
+            StrengthEffect => currentValue * 100,
+            ShieldEffect => currentValue * 100,
             _ => currentValue
         };
     }

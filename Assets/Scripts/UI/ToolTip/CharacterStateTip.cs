@@ -6,7 +6,7 @@ public class CharacterStateTip : MonoBehaviour
     [SerializeField] private RectTransform stateHolder;
     [SerializeField] private GameObject statePrefab;
 
-    public void SetCharacterStateTip(CharacterBase target)
+    public void SetCharacterStateTip(CharacterDataSO characterData)
     {
         if (stateHolder.childCount > 0)
         {
@@ -15,10 +15,10 @@ public class CharacterStateTip : MonoBehaviour
                 Destroy(stateHolder.GetChild(i).gameObject);
             }
         }
-        for (int i = 0; i < target.characterData.buffList.Count; i++)
+        for (int i = 0; i < characterData.buffList.Count; i++)
         {
             var state = Instantiate(statePrefab, stateHolder).GetComponent<CharacterStateSlot>();
-            state.SetState(target.characterData.buffList[i]);
+            state.SetState(characterData.buffList[i]);
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());

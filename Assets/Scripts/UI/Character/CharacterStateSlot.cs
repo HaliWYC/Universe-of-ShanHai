@@ -12,14 +12,26 @@ public class CharacterStateSlot : MonoBehaviour
     {
         icon.sprite = effect.effectIcon;
         turn.text = effect.round.ToString();
-        description.text = GetDescription(effect);
+        UpdateCardDescription(effect);
     }
 
-    private string GetDescription(Effect effect)
+    private string GetDescription(Effect effect, string description)
     {
-
-        return effect.round > 1 ? effect.description + ", remain " + effect.round.ToString() + " turns" : effect.description + ", remain " + effect.round.ToString() + " turn";
+        return effect.round > 1 ? description + ", remain " + effect.round.ToString() + " turns" : description + ", remain " + effect.round.ToString() + " turn";
     }
-
-    //TODO:Effect Value Change
+    public void UpdateCardDescription(Effect effect)
+    {
+        effect.UpdateCurrentValue();
+        string[] strings = effect.description.Split("#");
+        string returnString = "";
+        for (int i = 0; i < strings.Length; i++)
+        {
+            if (i % 2 == 1)
+            {
+                strings[i] = effect.GetCurrentValue(effect).ToString();
+            }
+            returnString += strings[i];
+        }
+        description.text = GetDescription(effect, returnString);
+    }
 }

@@ -85,22 +85,26 @@ public class TurnBaseManager : MonoBehaviour
             case RoomType.Boss:
                 GameManager.Instance.player.gameObject.SetActive(true);
                 GameStart();
+                GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
             case RoomType.Shop:
                 GameManager.Instance.player.gameObject.SetActive(false);
                 if (!GuidanceManager.Instance.guidanceCheckList[20])
                     StartCoroutine(GuidanceManager.Instance.ShopGuidance(8));
+                GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
             case RoomType.Treasure:
                 GameManager.Instance.player.gameObject.SetActive(false);
                 if (!GuidanceManager.Instance.guidanceCheckList[19])
                     StartCoroutine(GuidanceManager.Instance.TreasureGuidance(5));
+                GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
             case RoomType.RestRoom:
                 GameManager.Instance.player.gameObject.SetActive(true);
                 if (!GuidanceManager.Instance.guidanceCheckList[21])
                     StartCoroutine(GuidanceManager.Instance.RestRoomGuidance(5));
                 GameManager.Instance.player.GetComponent<PlayerAnimation>().SetSleepAnimation();
+                GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
         }
         RelicEvent.OnNewRoom();

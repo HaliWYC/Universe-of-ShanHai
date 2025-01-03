@@ -67,12 +67,12 @@ public class ShieldEffect : Effect
                     currentTarget.vfxController.buff.SetActive(true);
                 else
                     currentTarget.vfxController.debuff.SetActive(true);
-                currentTarget.healthBarController.UpdateBuff();
                 buff.Execute(currentTarget);
                 return;
             }
         }
         var Shield = SetUpValue(CreateInstance<ShieldEffect>());
+
         if (!IsOnceEffect(Shield))
             currentTarget.characterData.buffList.Add(Shield);
 
@@ -81,6 +81,10 @@ public class ShieldEffect : Effect
         else
             currentTarget.characterData.currentDefenseMultiplier *= 1 - value;
         Shield.Execute(currentTarget);
+        if (!GuidanceManager.Instance.guidanceCheckList[23])
+        {
+            GuidanceManager.Instance.StartCharacterStateDetailsGuidance();
+        }
     }
     private ShieldEffect SetUpValue(ShieldEffect effect)
     {

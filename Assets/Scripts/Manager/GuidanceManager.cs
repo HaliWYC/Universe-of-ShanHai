@@ -249,6 +249,18 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
         guidanceList[22].SetActive(false);
     }
 
+    public IEnumerator CharacterStateDetailsGuidance(float time)
+    {
+        ClosePreviousGuidance(23);
+        guidanceCheckList[23] = true;
+        yield return new WaitForSeconds(time);
+        guidanceList[23].SetActive(false);
+    }
+    public void StartCharacterStateDetailsGuidance()
+    {
+        StartCoroutine(CharacterStateDetailsGuidance(6));
+    }
+
     private void ClosePreviousGuidance(int index)
     {
         for (int i = 0; i < index; i++)

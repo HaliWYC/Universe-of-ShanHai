@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class CharacterBase : MonoBehaviour, IPointerClickHandler
+public class CharacterBase : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
 {
     [Header("Property")]
     public CharacterDataSO templateCharacterData;
@@ -129,6 +129,14 @@ public class CharacterBase : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.button == PointerEventData.InputButton.Right && characterData.buffList.Count > 0)
+        {
+            UIPanel.Instance.ShowCharacterStateToolTip(this, transform);
+        }
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UIPanel.Instance.characterStateTip.gameObject.SetActive(false);
     }
 }
