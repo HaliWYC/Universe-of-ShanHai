@@ -9,10 +9,5 @@ public class GuidancePrompt : MonoBehaviour
     {
         promptText.text = guidance.prompt;
         //transform.position = guidance.position;
-        if (guidance.showCharacter)
-            character.gameObject.SetActive(true);
-        else
-            character.gameObject.SetActive(false);
-
     }
 }
