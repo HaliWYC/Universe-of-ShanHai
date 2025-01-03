@@ -24,7 +24,7 @@ public class DamageEffect : Effect
             }
         }
     }
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
         if (GameManager.Instance.player.characterData != null)
             currentValue = math.round(value * GameManager.Instance.player.characterData.currentAttackMultiplier + GameManager.Instance.player.characterData.nextAttackIncrement);

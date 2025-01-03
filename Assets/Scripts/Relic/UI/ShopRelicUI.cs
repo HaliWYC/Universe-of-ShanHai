@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-public class ShopRelicUI : MonoBehaviour
+public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
 {
     public Relic relicData;
     public Image relicIcon;

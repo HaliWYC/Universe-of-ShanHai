@@ -22,7 +22,7 @@ public class Rest : Effect
         Execute(from);
     }
 
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
 
     }

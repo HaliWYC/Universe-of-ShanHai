@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 60
   baseAttackMultiplier: 1
-  currentAttackMultiplier: 0
+  currentAttackMultiplier: 1
   nextAttackIncrement: 0
   baseDefenseMultiplier: 1
-  currentDefenseMultiplier: 0
+  currentDefenseMultiplier: 1
   nextDefenseIncrement: 0
+  buffList: []
   relics: []
   Money: 0

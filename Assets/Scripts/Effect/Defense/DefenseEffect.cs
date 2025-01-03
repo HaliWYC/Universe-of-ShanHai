@@ -15,7 +15,7 @@ public class DefenseEffect : Effect
             SetupRound(target);
         }
     }
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
         if (GameManager.Instance.player.characterData != null)
             currentValue = math.round(value * GameManager.Instance.player.characterData.currentDefenseMultiplier + GameManager.Instance.player.characterData.nextDefenseIncrement);

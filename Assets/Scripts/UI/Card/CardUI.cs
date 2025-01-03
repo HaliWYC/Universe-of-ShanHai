@@ -39,10 +39,6 @@ public class CardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     public void UpdateCardDescription()
     {
-        for (int j = 0; j < cardData.effectList.Count; j++)
-        {
-            cardData.effectList[j].UpdateUI();
-        }
         string[] strings = cardData.cardDescription.Split("#");
         int effectIndex = 0;
         string returnString = "";
@@ -82,7 +78,7 @@ public class CardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-
+        PoolTool.Instance.InitSoundEffect(AudioManager.Instance.soundDetailList.GetSoundDetails("EnterCardUI"));
     }
 
     public void OnPointerExit(PointerEventData eventData)

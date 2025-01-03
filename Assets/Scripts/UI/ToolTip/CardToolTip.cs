@@ -32,7 +32,7 @@ public class CardToolTip : MonoBehaviour
     {
         for (int j = 0; j < cardData.effectList.Count; j++)
         {
-            cardData.effectList[j].UpdateUI();
+            cardData.effectList[j].UpdateCurrentValue();
         }
         string[] strings = cardData.cardDescription.Split("#");
         int effectIndex = 0;

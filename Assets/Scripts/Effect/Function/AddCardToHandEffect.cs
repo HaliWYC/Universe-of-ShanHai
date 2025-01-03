@@ -11,7 +11,7 @@ public class AddCardToHandEffect : Effect
         Execute(null);
     }
 
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
 
     }

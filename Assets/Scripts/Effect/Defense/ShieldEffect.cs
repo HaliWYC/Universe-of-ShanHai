@@ -19,7 +19,7 @@ public class ShieldEffect : Effect
                 break;
         }
     }
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
 
     }

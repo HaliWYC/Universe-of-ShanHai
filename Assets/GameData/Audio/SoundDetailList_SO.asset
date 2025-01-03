@@ -118,3 +118,8 @@ MonoBehaviour:
     audioPitchMin: 1
     audioPitchMax: 1
     audioVolume: 1
+  - soundName: EnterCardUI
+    audioClip: {fileID: 8300000, guid: 57e99841ce82b4ae9b2344acc211a0bb, type: 3}
+    audioPitchMin: 1
+    audioPitchMax: 1
+    audioVolume: 0.8

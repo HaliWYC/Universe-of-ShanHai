@@ -30,6 +30,7 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isSold || isMoving) return;
+        PoolTool.Instance.InitSoundEffect(AudioManager.Instance.soundDetailList.GetSoundDetails("EnterCardUI"));
         originalPosition = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
         transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);
     }
@@ -85,10 +86,6 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void UpdateCardDescription()
     {
-        for (int j = 0; j < cardData.effectList.Count; j++)
-        {
-            cardData.effectList[j].UpdateUI();
-        }
         string[] strings = cardData.cardDescription.Split("#");
         int effectIndex = 0;
         string returnString = "";

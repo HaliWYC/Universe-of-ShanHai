@@ -8,9 +8,11 @@ public class CharacterDataSO : ScriptableObject
     public int maxHP;
     public float baseAttackMultiplier = 1f;
     public float currentAttackMultiplier;
+    public float baseAttackIncrement = 0;
     public float nextAttackIncrement;
     public float baseDefenseMultiplier = 1f;
     public float currentDefenseMultiplier;
+    public float baseDefenseIncrement = 0;
     public float nextDefenseIncrement;
 
     public List<Effect> buffList;
@@ -19,10 +21,4 @@ public class CharacterDataSO : ScriptableObject
 
     [Header("Currency")]
     public int Money;
-
-    public void RefreshProperty()
-    {
-        currentAttackMultiplier = baseAttackMultiplier;
-        currentDefenseMultiplier = baseDefenseMultiplier;
-    }
 }

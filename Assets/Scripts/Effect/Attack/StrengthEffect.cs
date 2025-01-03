@@ -21,7 +21,7 @@ public class StrengthEffect : Effect
                 break;
         }
     }
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
 
     }

@@ -48,11 +48,11 @@ public class UIPanel : Singleton<UIPanel>
     {
         if (cardData != null)
         {
-            cardToolTip.GetComponent<RectTransform>().pivot = new Vector2(0f, 0f);
+            cardToolTip.GetComponent<RectTransform>().pivot = new Vector2(-0.2f, 0f);
             if (!isCardUI)
-                cardToolTip.transform.position = Camera.main.WorldToScreenPoint(card.position) + Vector3.up * 100;
+                cardToolTip.transform.position = Camera.main.WorldToScreenPoint(card.position) + Vector3.up * 50;
             else
-                cardToolTip.transform.position = card.position + Vector3.up * 100;
+                cardToolTip.transform.position = card.position + Vector3.up * 50;
             cardToolTip.SetCardData(cardData);
         }
     }

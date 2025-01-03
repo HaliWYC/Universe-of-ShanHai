@@ -5,21 +5,21 @@ public class DrawCardEffect : Effect
 {
     public override void Init()
     {
-       CardDeck.Instance.DrawCard((int)value);
+        CardDeck.Instance.DrawCard((int)value);
     }
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
-        
+
     }
     public override void Execute(CharacterBase currentTarget)
-    {   
-        
+    {
+
     }
 
     public override void End(CharacterBase currentTarget)
     {
-        
+
     }
 
-    
+
 }

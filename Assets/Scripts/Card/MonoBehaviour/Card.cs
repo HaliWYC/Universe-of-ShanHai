@@ -43,6 +43,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isMoving) return;
+        PoolTool.Instance.InitSoundEffect(AudioManager.Instance.soundDetailList.GetSoundDetails("EnterCardUI"));
         transform.position = new Vector3(originPosition.x, -4.2f, originPosition.z);
         transform.rotation = Quaternion.identity;
         GetComponent<SortingGroup>().sortingOrder = 20;
@@ -89,7 +90,7 @@ public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     {
         for (int j = 0; j < cardData.effectList.Count; j++)
         {
-            cardData.effectList[j].UpdateUI();
+            cardData.effectList[j].UpdateCurrentValue();
         }
         string[] strings = cardData.cardDescription.Split("#");
         int effectIndex = 0;

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-public class CharacterBase : MonoBehaviour
+using UnityEngine.EventSystems;
+public class CharacterBase : MonoBehaviour, IPointerClickHandler
 {
     [Header("Property")]
     public CharacterDataSO templateCharacterData;
@@ -44,7 +45,7 @@ public class CharacterBase : MonoBehaviour
         healthBarController.UpdateBuff();
         if (characterData != null)
         {
-            characterData.RefreshProperty();
+            RefreshProperty();
         }
     }
 
@@ -116,5 +117,18 @@ public class CharacterBase : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void RefreshProperty()
+    {
+        characterData.currentAttackMultiplier = characterData.baseAttackMultiplier;
+        characterData.nextAttackIncrement = characterData.baseAttackIncrement;
+        characterData.currentDefenseMultiplier = characterData.baseDefenseMultiplier;
+        characterData.nextDefenseIncrement = characterData.baseDefenseIncrement;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+
     }
 }

@@ -7,7 +7,7 @@ public class EliminateEffect : Effect
     {
         Execute(null);
     }
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
 
     }

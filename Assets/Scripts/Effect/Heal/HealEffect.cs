@@ -15,7 +15,7 @@ public class HealEffect : Effect
             SetupRound(target);
         }
     }
-    public override void UpdateUI()
+    public override void UpdateCurrentValue()
     {
 
     }

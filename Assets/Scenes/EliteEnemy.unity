@@ -214,6 +214,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 363254287928278150, guid: 32cfef0ed603b4a5fa757edc87f80bc4, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6037657911861096268, guid: 32cfef0ed603b4a5fa757edc87f80bc4, type: 3}
     - target: {fileID: 3398336262816565203, guid: 32cfef0ed603b4a5fa757edc87f80bc4, type: 3}
       propertyPath: m_Name
       value: EliteEnemy
@@ -258,6 +262,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4996298362019765996, guid: 32cfef0ed603b4a5fa757edc87f80bc4, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -3205875519195053612, guid: 32cfef0ed603b4a5fa757edc87f80bc4, type: 3}
     - target: {fileID: 8459362360477102226, guid: 32cfef0ed603b4a5fa757edc87f80bc4, type: 3}
       propertyPath: m_Mesh
       value: 

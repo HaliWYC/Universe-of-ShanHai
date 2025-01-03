@@ -36,7 +36,7 @@ public abstract class Effect : ScriptableObject
     /// <param name="from">发起者</param>
     /// <param name="target">目标</param>
     public abstract void Execute(CharacterBase currentTarget);
-    public abstract void UpdateUI();
+    public abstract void UpdateCurrentValue();
     public abstract void End(CharacterBase currentTarget);
 
     protected bool IsOnceEffect(Effect effect)
