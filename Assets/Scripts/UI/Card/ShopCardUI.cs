@@ -57,7 +57,7 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
                 GameManager.Instance.player.characterData.Money -= cardPrice;
                 CardManager.Instance.UnlockCard(cardData);
                 UIPanel.Instance.UpdateCurrencyText();
-                UpdateAllCardUI();
+                ShopPanel.Instance.UpdateAllShopUI();
             }
             if (CardAmount == 0)
             {
@@ -100,14 +100,6 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             returnString += strings[i];
         }
         descriptionText.text = returnString;
-    }
-
-    public void UpdateAllCardUI()
-    {
-        for (int i = 0; i < Parent.childCount; i++)
-        {
-            Parent.GetChild(i).GetComponent<ShopCardUI>().UpdateCardUI();
-        }
     }
 
     public void UpdateCardUI()

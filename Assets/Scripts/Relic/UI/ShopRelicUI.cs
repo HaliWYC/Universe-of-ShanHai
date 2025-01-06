@@ -27,7 +27,7 @@ public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHand
                 GameManager.Instance.player.characterData.Money -= relicData.relicPrice;
                 RelicManager.Instance.EquipRelic(relicData);
                 UIPanel.Instance.UpdateCurrencyText();
-                UpdateAllCardUI();
+                ShopPanel.Instance.UpdateAllShopUI();
                 gameObject.SetActive(false);
                 UIPanel.Instance.relicToolTip.gameObject.SetActive(false);
             }
@@ -46,14 +46,6 @@ public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHand
         relic.relicPrice = RelicManager.Instance.GetRelicPriceByRarity(relic);
         relic.relicPrice = Convert.ToInt32(math.round((1 + UnityEngine.Random.Range(-0.1f, 0.1f)) * relic.relicPrice));
         UpdateRelicUI();
-    }
-
-    public void UpdateAllCardUI()
-    {
-        for (int i = 0; i < Parent.childCount; i++)
-        {
-            Parent.GetChild(i).GetComponent<ShopRelicUI>().UpdateRelicUI();
-        }
     }
 
     public void UpdateRelicUI()

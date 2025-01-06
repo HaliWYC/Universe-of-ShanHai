@@ -117,7 +117,6 @@ public class RelicManager : Singleton<RelicManager>
             GameManager.Instance.player.characterData.relics.Add(relic);
             UIPanel.Instance.InitRelics();
         }
-
     }
 
     public int GetRelicPriceByRarity(RelicData relic)

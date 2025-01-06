@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class ShopPanel : MonoBehaviour
+public class ShopPanel : Singleton<ShopPanel>
 {
     [Header("Components")]
     public GameObject CardPrefab;
@@ -17,8 +17,6 @@ public class ShopPanel : MonoBehaviour
 
     [Header("Settings")]
     public MultipleRarity shopRarity;
-    private bool isCardReady;
-    private bool isRelicReady;
 
     [Header("Card")]
 
@@ -32,8 +30,9 @@ public class ShopPanel : MonoBehaviour
     public int numOfRelic = 4;
     private List<RelicData> playerRelics;
     private List<RelicData> checkRelicList = new();
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         backButton.onClick.AddListener(BackToMap);
         backButton.interactable = false;
         playerRelics = GameManager.Instance.player.characterData.relics;
@@ -43,8 +42,6 @@ public class ShopPanel : MonoBehaviour
     {
         InitCardList();
         InitRelicList();
-        if (isCardReady && isRelicReady)
-            backButton.interactable = true;
     }
 
     private void OnDisable()
@@ -67,6 +64,18 @@ public class ShopPanel : MonoBehaviour
         loadMapEvent.RaiseEvent(null, this);
     }
 
+    public void UpdateAllShopUI()
+    {
+        for (int i = 0; i < CardShopHolder.childCount; i++)
+        {
+            CardShopHolder.GetChild(i).GetComponent<ShopCardUI>().UpdateCardUI();
+        }
+        for (int i = 0; i < RelicShopHolder.childCount; i++)
+        {
+            RelicShopHolder.GetChild(i).GetComponent<ShopRelicUI>().UpdateRelicUI();
+        }
+    }
+
     #region Card
     private void InitCardList()
     {
@@ -76,7 +85,6 @@ public class ShopPanel : MonoBehaviour
 
     private void InitCards()
     {
-        isCardReady = false;
         waitingCardList.Clear();
         GenerateCardWaitingList();
         int count = 0;
@@ -93,7 +101,7 @@ public class ShopPanel : MonoBehaviour
                 count++;
                 if (count == numOfCard - 1)
                 {
-                    isCardReady = true;
+                    backButton.interactable = true;
                 }
             };
         }
@@ -144,10 +152,8 @@ public class ShopPanel : MonoBehaviour
     }
     private void InitRelics()
     {
-        isRelicReady = false;
         waitingCardList.Clear();
         GenerateRelicWaitingList();
-        int count = 0;
         for (int i = 0; i < waitingRelicList.Count; i++)
         {
             var Relic = Instantiate(relicPrefab, RelicShopHolder.transform).GetComponent<ShopRelicUI>();
@@ -155,15 +161,7 @@ public class ShopPanel : MonoBehaviour
             Relic.Parent = RelicShopHolder;
             Relic.SetRelic(waitingRelicList[i]);
             Relic.isMoving = true;
-            Relic.gameObject.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack).SetDelay(i * 0.3f).onComplete = () =>
-            {
-                Relic.isMoving = false;
-                count++;
-                if (count == numOfRelic - 1)
-                {
-                    isRelicReady = true;
-                }
-            };
+            Relic.gameObject.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack).SetDelay(i * 0.3f).onComplete = () => { Relic.isMoving = false; };
         }
     }
 
@@ -198,6 +196,7 @@ public class ShopPanel : MonoBehaviour
 
     private RelicData GetRandomRelic()
     {
+        if (checkRelicList.Count <= 0) return null;
         int randomIndex = UnityEngine.Random.Range(0, checkRelicList.Count);
         return checkRelicList[randomIndex];
     }

@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Shuriken", menuName = "Relic/Card/Shuriken")]
@@ -29,6 +30,7 @@ public class Shuriken : RelicData
             {
                 PoolTool.Instance.InitSoundEffect(AudioManager.Instance.soundDetailList.GetSoundDetails("Shuriken"));
                 lastTarget.TakeDamage(5);
+                GamePlayPanel.Instance.PopText(target.transform.position, 5, CreateInstance<DamageEffect>());
                 lastTarget.healthBarController.UpdateHealthBar();
             }
         }
