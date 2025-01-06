@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class RelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
 {
-    public Relic relicData;
+    public RelicData relicData;
     public Image relicIcon;
     public Text relicValue;
 
@@ -21,13 +21,13 @@ public class RelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
         UIPanel.Instance.relicToolTip.gameObject.SetActive(false);
     }
 
-    public void SetRelic(Relic relic)
+    public void SetRelic(RelicData relic)
     {
         relicData = relic;
         relicIcon.sprite = relic.relicIcon;
     }
 
-    public void UpdateRelicValue(Relic relic)
+    public void UpdateRelicValue(RelicData relic)
     {
         relicValue.text = relic.relicValue.ToString();
     }

@@ -44,11 +44,11 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (isSold || isMoving) return;
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             UIPanel.Instance.ShowCardToolTip(cardData, transform, true);
         }
-        if (isSold || isMoving) return;
         if (eventData.clickCount % 2 == 0)
         {
             if (GameManager.Instance.player.characterData.Money >= cardPrice)

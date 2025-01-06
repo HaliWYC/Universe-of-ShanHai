@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 4c8e16b00d43d46e4a4b44fba07c5857
   m_currentHash:
     serializedVersion: 2
-    Hash: a4d40930214993b4511d285ae27580a3
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: 4dd48d153aef7469990efc38feb4f859, type: 2}
+  - {fileID: 11400000, guid: 4517a31ef24ef4116bdb9a032f5e483e, type: 2}
   - {fileID: 11400000, guid: b835059cb6be2472e87781f0ce0dc5f9, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
@@ -101,6 +102,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - CardData
+    - RelicData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: a18acfd95e26c4beab48b112a43eeb94, type: 2}

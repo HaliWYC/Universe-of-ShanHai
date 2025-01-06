@@ -348,4 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relicData: {fileID: 0}
   relicIcon: {fileID: 2073962747600978974}
+  Parent: {fileID: 0}
   price: {fileID: 6889185721627956827}
+  priceColor: {r: 1, g: 0.5137255, b: 0, a: 1}
+  isMoving: 0

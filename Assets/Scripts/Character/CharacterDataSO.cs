@@ -17,7 +17,7 @@ public class CharacterDataSO : ScriptableObject
 
     public List<Effect> buffList;
 
-    public List<Relic> relics;
+    public List<RelicData> relics;
 
     [Header("Currency")]
     public int Money;

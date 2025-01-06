@@ -15,7 +15,7 @@ MonoBehaviour:
   cardID: 5
   cardName: MagicScroll
   cardImage: {fileID: 936532887, guid: 4be2b2d44d250ee42b80cd311728b13a, type: 3}
-  cardCost: 1
+  cardCost: 2
   cardType: 0
   cardRarity: 1
   cardTagList: 

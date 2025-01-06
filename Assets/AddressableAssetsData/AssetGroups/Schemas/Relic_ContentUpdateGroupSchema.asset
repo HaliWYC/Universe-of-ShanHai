@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8384f7c0adef149039dc233c2a6b1365, type: 3}
-  m_Name: CardDetails
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Relic_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  prompt: You can use the right mouse click on the card to see more information everytime.
+  m_Group: {fileID: 11400000, guid: 4517a31ef24ef4116bdb9a032f5e483e, type: 2}
+  m_StaticContent: 0

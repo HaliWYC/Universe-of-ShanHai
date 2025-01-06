@@ -7,13 +7,13 @@ public class PoolTool : Singleton<PoolTool>
 {
     public GameObject objPrefab;
     public GameObject soundPrefab;
-    public ObjectPool<GameObject> Pool;
+    public ObjectPool<GameObject> cardPool;
     public ObjectPool<GameObject> soundPool;
 
     protected override void Awake()
     {
         base.Awake();
-        Pool = new ObjectPool<GameObject>
+        cardPool = new ObjectPool<GameObject>
         (createFunc: () => Instantiate(objPrefab, transform),
         actionOnGet: (obj) => obj.SetActive(true),
         actionOnRelease: (obj) => obj.SetActive(false),
@@ -39,11 +39,11 @@ public class PoolTool : Singleton<PoolTool>
         var PreFillArray = new GameObject[count];
         for (int i = 0; i < count; i++)
         {
-            PreFillArray[i] = Pool.Get();
+            PreFillArray[i] = cardPool.Get();
         }
         foreach (var obj in PreFillArray)
         {
-            Pool.Release(obj);
+            cardPool.Release(obj);
         }
     }
     private void PreFillSoundPool(int count)
@@ -60,12 +60,12 @@ public class PoolTool : Singleton<PoolTool>
     }
     public GameObject GetObjectFromPool()
     {
-        return Pool.Get();
+        return cardPool.Get();
     }
 
     public void ReleaseObject(GameObject obj)
     {
-        Pool.Release(obj);
+        cardPool.Release(obj);
     }
 
     public void ReleaseSound(GameObject obj)

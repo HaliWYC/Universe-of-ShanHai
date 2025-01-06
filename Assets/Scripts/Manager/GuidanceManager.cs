@@ -231,7 +231,8 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
         ClosePreviousGuidance(20);
         guidanceCheckList[20] = true;
         yield return new WaitForSeconds(time);
-        guidanceList[20].SetActive(false);
+        if (!guidanceCheckList[24])
+            StartCoroutine(RelicUIGuidance(5));
     }
 
     public IEnumerator RestRoomGuidance(float time)
@@ -255,6 +256,13 @@ public class GuidanceManager : Singleton<GuidanceManager>, ISavable
         guidanceCheckList[23] = true;
         yield return new WaitForSeconds(time);
         guidanceList[23].SetActive(false);
+    }
+    public IEnumerator RelicUIGuidance(float time)
+    {
+        ClosePreviousGuidance(24);
+        guidanceCheckList[24] = true;
+        yield return new WaitForSeconds(time);
+        guidanceList[24].SetActive(false);
     }
     public void StartCharacterStateDetailsGuidance()
     {

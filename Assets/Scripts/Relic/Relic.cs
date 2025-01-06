@@ -1,5 +1,5 @@
 using UnityEngine;
-public abstract class Relic : ScriptableObject
+public abstract class RelicData : ScriptableObject
 {
     [Header("Info")]
     public int relicID;
@@ -9,12 +9,14 @@ public abstract class Relic : ScriptableObject
     [TextArea]
     public string description;
     [Header("Trade")]
-    public int relicCost;
+    public int relicPrice;
 
     [Header("Combat")]
     public int relicValue;
 
     [Header("bool")]
+    public bool designPrice;
+    public bool isAvailable;
     public bool isEquipped = false;
     private void OnEnable()
     {
@@ -42,6 +44,7 @@ public abstract class Relic : ScriptableObject
 
         RelicEvent.OnGainMoneyEvent += OnGainMoney;
         RelicEvent.OnLoseMoneyEvent += OnLoseMoney;
+        OnCreate();
     }
 
     private void OnDisable()
@@ -70,6 +73,8 @@ public abstract class Relic : ScriptableObject
 
         RelicEvent.OnGainMoneyEvent -= OnGainMoney;
         RelicEvent.OnLoseMoneyEvent -= OnLoseMoney;
+        isEquipped = false;
+        isAvailable = false;
     }
 
 
@@ -80,7 +85,7 @@ public abstract class Relic : ScriptableObject
 
     //Initialize relic
     public abstract void OnCreate();
-    public abstract void OnEquip(Relic relic);
+    public abstract void OnEquip(RelicData relic);
     public abstract void OnUnequip();
 
     //Combat

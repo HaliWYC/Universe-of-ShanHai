@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8384f7c0adef149039dc233c2a6b1365, type: 3}
   m_Name: Shop
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
   prompt: This is the Shop where has a lot of opportunities to strengthen yourself.
-    Normally, it will sell cards. In speciall occasion, it will sell the relics(Some
-    significant items contain huge power). Double click the card to purchase if you
-    have enough money.
-  showCharacter: 1
+    Normally, it will sell cards. In speciall occasion, it will sell the relics.
+    Double click the card to purchase if you have enough money.

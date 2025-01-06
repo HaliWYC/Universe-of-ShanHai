@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class CardManager : Singleton<CardManager>//, ISavable
+public class CardManager : Singleton<CardManager>, ISavable
 {
     public List<CardDataSO> cardDataList;
     public List<CardDataSO> normalCardList;
@@ -32,8 +32,8 @@ public class CardManager : Singleton<CardManager>//, ISavable
 
     private void Start()
     {
-        // ISavable savable = this;
-        // savable.RegisterSavable();
+        ISavable savable = this;
+        savable.RegisterSavable();
     }
     public void InitCardList()
     {
@@ -172,10 +172,7 @@ public class CardManager : Singleton<CardManager>//, ISavable
         for (int i = 0; i < rarities.Length; i++)
         {
             MultipleRarity cardRarity = (MultipleRarity)Enum.Parse(typeof(MultipleRarity), rarities[i]);
-            for (int c = 0; c < GetCardRarityList(cardRarity).Count; c++)
-            {
-                cardList.Add(GetCardRarityList(cardRarity)[c]);
-            }
+            cardList.AddRange(GetCardRarityList(cardRarity));
         }
         return cardList;
     }

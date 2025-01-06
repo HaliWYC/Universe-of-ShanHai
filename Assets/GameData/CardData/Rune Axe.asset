@@ -15,7 +15,7 @@ MonoBehaviour:
   cardID: 7
   cardName: Rune Axe
   cardImage: {fileID: 369783506, guid: 4be2b2d44d250ee42b80cd311728b13a, type: 3}
-  cardCost: 2
+  cardCost: 3
   cardType: 2
   cardRarity: 2
   cardTagList: 

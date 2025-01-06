@@ -27,8 +27,8 @@ public static class RelicEvent
     {
         OnCreateEvent?.Invoke();
     }
-    public static event Action<Relic> OnEquipEvent;
-    public static void OnEquip(Relic relic)
+    public static event Action<RelicData> OnEquipEvent;
+    public static void OnEquip(RelicData relic)
     {
         OnEquipEvent?.Invoke(relic);
     }

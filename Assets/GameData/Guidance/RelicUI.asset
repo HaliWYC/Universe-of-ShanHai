@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8384f7c0adef149039dc233c2a6b1365, type: 3}
-  m_Name: CardDetails
+  m_Name: RelicUI
   m_EditorClassIdentifier: 
-  prompt: You can use the right mouse click on the card to see more information everytime.
+  prompt: This is Relic(Significant item contains huge power). You can use the right
+    mouse click on to see further information every time.

@@ -18,5 +18,7 @@ MonoBehaviour:
   relicRarity: 1
   description: For each card you play, you gain a small charge. When you get 3 charge,
     deal 5 damage to the next enemy that attacks, then empty the charge.
-  relicCost: 0
+  relicPrice: 140
   relicValue: 0
+  isAvailable: 1
+  isEquipped: 0

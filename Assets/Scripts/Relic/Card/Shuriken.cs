@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Shuriken", menuName = "Relic/Card/Shuriken")]
-public class Shuriken : Relic
+public class Shuriken : RelicData
 {
     private CharacterBase lastTarget;
     public override void OnCardDiscard()
@@ -60,7 +60,7 @@ public class Shuriken : Relic
 
     }
 
-    public override void OnEquip(Relic relic)
+    public override void OnEquip(RelicData relic)
     {
         if (relic == this)
         {

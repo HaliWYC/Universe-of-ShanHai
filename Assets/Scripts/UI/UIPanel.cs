@@ -27,6 +27,7 @@ public class UIPanel : Singleton<UIPanel>
             var relicUI = Instantiate(relicPrefab, relicHolder).GetComponent<RelicUI>();
             relicUI.SetRelic(relic);
             relicUI.UpdateRelicValue(relic);
+            relic.isEquipped = true;
         }
     }
 
@@ -48,28 +49,35 @@ public class UIPanel : Singleton<UIPanel>
     {
         if (cardData != null)
         {
-            cardToolTip.GetComponent<RectTransform>().pivot = new Vector2(-0.2f, 0f);
+
             if (!isCardUI)
+            {
+                cardToolTip.GetComponent<RectTransform>().pivot = new Vector2(-0.2f, 0f);
                 cardToolTip.transform.position = Camera.main.WorldToScreenPoint(card.position) + Vector3.up * 50;
+            }
             else
-                cardToolTip.transform.position = card.position + Vector3.up * 50;
+            {
+                cardToolTip.GetComponent<RectTransform>().pivot = new Vector2(-0.3f, 0f);
+                cardToolTip.transform.position = card.position;
+            }
+
             cardToolTip.SetCardData(cardData);
         }
     }
 
-    public void ShowRelicToolTip(Relic relicData, Transform relicUI, bool isShop)
+    public void ShowRelicToolTip(RelicData relicData, Transform relicUI, bool isShop)
     {
         if (relicData != null)
         {
             if (!isShop)
             {
                 relicToolTip.GetComponent<RectTransform>().pivot = new Vector2(-0.1f, 1.2f);
-                relicToolTip.transform.position = relicUI.position + Vector3.up * 200;
+                relicToolTip.transform.position = relicUI.position + Vector3.up * 50;
             }
             else
             {
                 relicToolTip.GetComponent<RectTransform>().pivot = new Vector2(1f, 0f);
-                relicToolTip.transform.position = relicUI.position + Vector3.left * 100;
+                relicToolTip.transform.position = relicUI.position + Vector3.left * 50;
             }
             relicToolTip.SetRelicData(relicData);
         }

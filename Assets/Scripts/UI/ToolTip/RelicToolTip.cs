@@ -8,7 +8,7 @@ public class RelicToolTip : MonoBehaviour
     [SerializeField] private TextMeshProUGUI relicRarity;
     [SerializeField] private TextMeshProUGUI relicDescription;
 
-    public void SetRelicData(Relic relic)
+    public void SetRelicData(RelicData relic)
     {
         relicName.text = relic.relicName;
         relicRarity.text = relic.relicRarity.ToString();

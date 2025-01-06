@@ -38,8 +38,8 @@ public class CardDeck : Singleton<CardDeck>
 
     public void NewTurnDrawCards()
     {
-        DrawCard(4);
-        SetCardLayout(4, true);
+        DrawCard(GameManager.Instance.player.cardDrawEachTurn);
+        SetCardLayout(GameManager.Instance.player.cardDrawEachTurn, true);
     }
 
     /// <summary>

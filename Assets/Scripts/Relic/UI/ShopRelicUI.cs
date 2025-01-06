@@ -2,19 +2,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using Unity.Mathematics;
+using System;
 public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
 {
-    public Relic relicData;
+    public RelicData relicData;
     public Image relicIcon;
+    public RectTransform Parent;
     public TextMeshProUGUI price;
+    public Color priceColor;
+    public bool isMoving;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("1");
+        if (isMoving) return;
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            Debug.Log("2");
             UIPanel.Instance.ShowRelicToolTip(relicData, transform, true);
+        }
+        if (eventData.clickCount % 2 == 0)
+        {
+            if (GameManager.Instance.player.characterData.Money >= relicData.relicPrice)
+            {
+                GameManager.Instance.player.characterData.Money -= relicData.relicPrice;
+                RelicManager.Instance.EquipRelic(relicData);
+                UIPanel.Instance.UpdateCurrencyText();
+                UpdateAllCardUI();
+                gameObject.SetActive(false);
+                UIPanel.Instance.relicToolTip.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -23,10 +39,26 @@ public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHand
         UIPanel.Instance.relicToolTip.gameObject.SetActive(false);
     }
 
-    public void SetRelic(Relic relic)
+    public void SetRelic(RelicData relic)
     {
         relicData = relic;
         relicIcon.sprite = relic.relicIcon;
-        price.text = UIManager.Instance.GetRelicPriceByRarity(relicData.relicRarity).ToString();
+        relic.relicPrice = RelicManager.Instance.GetRelicPriceByRarity(relic);
+        relic.relicPrice = Convert.ToInt32(math.round((1 + UnityEngine.Random.Range(-0.1f, 0.1f)) * relic.relicPrice));
+        UpdateRelicUI();
+    }
+
+    public void UpdateAllCardUI()
+    {
+        for (int i = 0; i < Parent.childCount; i++)
+        {
+            Parent.GetChild(i).GetComponent<ShopRelicUI>().UpdateRelicUI();
+        }
+    }
+
+    public void UpdateRelicUI()
+    {
+        price.text = relicData.relicPrice.ToString();
+        price.color = GameManager.Instance.player.characterData.Money > relicData.relicPrice ? priceColor : Color.red;
     }
 }

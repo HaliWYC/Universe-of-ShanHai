@@ -2,7 +2,9 @@ public class Player : CharacterBase, ISavable
 {
     public IntVariable playerMana;
     public int maxMana;
+    public int cardDrawEachTurn;
     private int manaIncrementCounter = 0;
+
 
     public int CurrentMana { get => playerMana.currentValue; set => playerMana.SetValue(value); }
 
@@ -37,6 +39,7 @@ public class Player : CharacterBase, ISavable
     {
         manaIncrementCounter = 0;
         playerMana.maxValue = maxMana;
+        RefreshProperty();
     }
 
     public GameSaveData GenerateSaveData()

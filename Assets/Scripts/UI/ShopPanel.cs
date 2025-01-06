@@ -6,33 +6,45 @@ using DG.Tweening;
 
 public class ShopPanel : MonoBehaviour
 {
+    [Header("Components")]
     public GameObject CardPrefab;
     public GameObject relicPrefab;
 
     public RectTransform CardShopHolder;
     public RectTransform RelicShopHolder;
-
-    private List<CardDataSO> waitingCardList = new();
-
-    public MultipleRarity shopRarity;
-
-    public List<CardDataSO> cardList = new();
-    public List<Relic> relicList = new();
     public Button backButton;
     public ObjectEventSO loadMapEvent;
+
+    [Header("Settings")]
+    public MultipleRarity shopRarity;
+    private bool isCardReady;
+    private bool isRelicReady;
+
+    [Header("Card")]
+
+    private List<CardDataSO> waitingCardList = new();
+    public List<CardDataSO> cardList = new();
     public int numOfCard = 8;
 
+    [Header("Relic")]
+    private List<RelicData> waitingRelicList = new();
+    public List<RelicData> relicList = new();
+    public int numOfRelic = 4;
+    private List<RelicData> playerRelics;
+    private List<RelicData> checkRelicList = new();
     private void Awake()
     {
         backButton.onClick.AddListener(BackToMap);
         backButton.interactable = false;
+        playerRelics = GameManager.Instance.player.characterData.relics;
     }
 
     private void OnEnable()
     {
         InitCardList();
-        InitCards();
-        //Instantiate(relicPrefab, RelicShopHolder);
+        InitRelicList();
+        if (isCardReady && isRelicReady)
+            backButton.interactable = true;
     }
 
     private void OnDisable()
@@ -55,15 +67,18 @@ public class ShopPanel : MonoBehaviour
         loadMapEvent.RaiseEvent(null, this);
     }
 
+    #region Card
     private void InitCardList()
     {
         cardList = CardManager.Instance.GetCardListByMultipleRarity(shopRarity);
+        InitCards();
     }
 
     private void InitCards()
     {
+        isCardReady = false;
         waitingCardList.Clear();
-        GenerateWaitingList();
+        GenerateCardWaitingList();
         int count = 0;
         for (int i = 0; i < waitingCardList.Count; i++)
         {
@@ -78,18 +93,18 @@ public class ShopPanel : MonoBehaviour
                 count++;
                 if (count == numOfCard - 1)
                 {
-                    backButton.interactable = true;
+                    isCardReady = true;
                 }
             };
         }
     }
 
-    private void GenerateWaitingList()
+    private void GenerateCardWaitingList()
     {
         for (int i = 0; i < numOfCard; i++)
         {
             CardDataSO wait = GetRandomCard();
-            if (!CheckNoRepeatCard(wait))
+            if (CheckNoRepeatCard(wait))
             {
                 waitingCardList.Add(wait);
             }
@@ -113,9 +128,88 @@ public class ShopPanel : MonoBehaviour
         {
             if (waitingCardList[i] == cardDataSO)
             {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
+    #endregion
+
+    #region Relic
+
+    private void InitRelicList()
+    {
+        relicList = RelicManager.Instance.GetCardListByMultipleRarity(shopRarity);
+        InitRelics();
+    }
+    private void InitRelics()
+    {
+        isRelicReady = false;
+        waitingCardList.Clear();
+        GenerateRelicWaitingList();
+        int count = 0;
+        for (int i = 0; i < waitingRelicList.Count; i++)
+        {
+            var Relic = Instantiate(relicPrefab, RelicShopHolder.transform).GetComponent<ShopRelicUI>();
+            Relic.gameObject.transform.localScale = Vector3.zero;
+            Relic.Parent = RelicShopHolder;
+            Relic.SetRelic(waitingRelicList[i]);
+            Relic.isMoving = true;
+            Relic.gameObject.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack).SetDelay(i * 0.3f).onComplete = () =>
+            {
+                Relic.isMoving = false;
+                count++;
+                if (count == numOfRelic - 1)
+                {
+                    isRelicReady = true;
+                }
+            };
+        }
+    }
+
+    private void GenerateRelicWaitingList()
+    {
+        InitCheckRelicList();
+        for (int i = 0; i < numOfRelic; i++)
+        {
+            RelicData wait = GetRandomRelic();
+            if (wait != null)
+            {
+                if (CheckNoRepeatRelic(wait))
+                {
+                    waitingRelicList.Add(wait);
+                }
+            }
+
+        }
+    }
+
+    private void InitCheckRelicList()
+    {
+        checkRelicList = relicList;
+        for (int i = 0; i < playerRelics.Count; i++)
+        {
+            if (checkRelicList.Contains(playerRelics[i]))
+            {
+                checkRelicList.RemoveAt(checkRelicList.IndexOf(playerRelics[i]));
+            }
+        }
+    }
+
+    private RelicData GetRandomRelic()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, checkRelicList.Count);
+        return checkRelicList[randomIndex];
+    }
+
+    private bool CheckNoRepeatRelic(RelicData relicData)
+    {
+        for (int i = 0; i < waitingRelicList.Count; i++)
+        {
+            if (waitingRelicList[i].relicID == relicData.relicID)
+                return false;
+        }
+        return true;
+    }
+    #endregion
 }
