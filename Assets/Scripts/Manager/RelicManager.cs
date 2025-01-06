@@ -24,7 +24,7 @@ public class RelicManager : Singleton<RelicManager>
         InitializeRelicDataList();
     }
 
-    private void SetRelicAvailable()
+    public void SetRelicAvailable()
     {
         for (int i = 0; i < alwaysAvailableRelicList.Count; i++)
         {

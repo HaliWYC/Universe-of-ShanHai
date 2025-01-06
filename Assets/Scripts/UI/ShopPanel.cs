@@ -40,6 +40,7 @@ public class ShopPanel : Singleton<ShopPanel>
 
     private void OnEnable()
     {
+        RelicManager.Instance.SetRelicAvailable();
         InitCardList();
         InitRelicList();
     }
