@@ -58,9 +58,12 @@ public class CardToolTip : MonoBehaviour
             if (cardData.cardTagList.Count > 0)
             {
                 // Clear previous tags
-                for (int i = 0; i < tagContainer.childCount; i++)
+                if (tagContainer.childCount > 0)
                 {
-                    Destroy(tagContainer.GetChild(i).gameObject);
+                    for (int i = 0; i < tagContainer.childCount; i++)
+                    {
+                        Destroy(tagContainer.GetChild(i).gameObject);
+                    }
                 }
                 // Add new tags
                 for (int i = 0; i < cardData.cardTagList.Count; i++)

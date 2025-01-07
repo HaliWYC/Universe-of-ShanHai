@@ -1,10 +1,31 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Shuriken", menuName = "Relic/Card/Shuriken")]
+[CreateAssetMenu(fileName = "Shuriken", menuName = "Relic/Superior/Shuriken")]
 public class Shuriken : RelicData
 {
     private CharacterBase lastTarget;
+
+    public override void OnAfterCharacterDead(CharacterBase character)
+    {
+
+    }
+
+    public override void OnAfterFatalDamage(CharacterBase character, int damage)
+    {
+
+    }
+
+    public override void OnBeforeCharacterDead(CharacterBase character)
+    {
+
+    }
+
+    public override void OnBeforeFatalDamage(CharacterBase character, int damage)
+    {
+
+    }
+
     public override void OnCardDiscard()
     {
 
@@ -17,7 +38,7 @@ public class Shuriken : RelicData
 
     public override void OnCardPlay(CharacterBase from, CharacterBase target)
     {
-        if (!isEquipped) return;
+        if (!from.characterData.relics.Contains(this)) return;
         if (target != null)
         {
             lastTarget = target;
@@ -30,8 +51,7 @@ public class Shuriken : RelicData
             {
                 PoolTool.Instance.InitSoundEffect(AudioManager.Instance.soundDetailList.GetSoundDetails("Shuriken"));
                 lastTarget.TakeDamage(5);
-                GamePlayPanel.Instance.PopText(target.transform.position, 5, CreateInstance<DamageEffect>());
-                lastTarget.healthBarController.UpdateHealthBar();
+                GamePlayPanel.Instance.PopText(lastTarget.transform.position, 5, CreateInstance<DamageEffect>());
             }
         }
         UIPanel.Instance.UpdateRelicsValue();
@@ -64,10 +84,7 @@ public class Shuriken : RelicData
 
     public override void OnEquip(RelicData relic)
     {
-        if (relic == this)
-        {
-            isEquipped = true;
-        }
+
     }
 
     public override void OnGainMoney()
@@ -112,7 +129,7 @@ public class Shuriken : RelicData
 
     }
 
-    public override void OnPlyaerTurnBegin()
+    public override void OnPlayerTurnBegin()
     {
 
     }

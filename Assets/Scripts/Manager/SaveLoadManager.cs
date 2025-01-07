@@ -8,7 +8,7 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
 
     public List<DataSlot> dataSlots = new List<DataSlot>(new DataSlot[3]);
 
-    private string jsonFolder;
+    [SerializeField] private string jsonFolder;
     private int currentIndex;
 
     protected override void Awake()
@@ -16,7 +16,17 @@ public class SaveLoadManager : Singleton<SaveLoadManager>
         base.Awake();
         jsonFolder = Application.persistentDataPath + "/SAVE DATA/";
     }
-
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.I))
+    //     {
+    //         Save(0);
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.O))
+    //     {
+    //         Load(0);
+    //     }
+    // }
     public void RegisterSavable(ISavable savable)
     {
         if (!savableList.Contains(savable))

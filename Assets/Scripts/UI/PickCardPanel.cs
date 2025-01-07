@@ -71,9 +71,12 @@ public class PickCardPanel : Singleton<PickCardPanel>
 
     public void CreateCards()
     {
-        for (int i = 0; i < cardContainer.childCount; i++)
+        if (cardContainer.childCount > 0)
         {
-            Destroy(cardContainer.GetChild(i).gameObject);
+            for (int i = 0; i < cardContainer.childCount; i++)
+            {
+                Destroy(cardContainer.GetChild(i).gameObject);
+            }
         }
         if (rewardList.Count == 0) return;
         waitingCardList.Clear();

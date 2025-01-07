@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public class GamePlayPanel : Singleton<GamePlayPanel>
 {
-    public ObjectEventSO playerEndEvent;
+    public ObjectEventSO playerTurnEndEvent;
     private VisualElement rootElement;
     private Label energyAmountLabel, drawAmountLabel, discardAmountLabel;
     public UnityEngine.UI.Button endTurnButton;
@@ -31,7 +31,8 @@ public class GamePlayPanel : Singleton<GamePlayPanel>
 
     private void OnEndTurnButtonClick()
     {
-        playerEndEvent.RaiseEvent(null, this);
+        playerTurnEndEvent.RaiseEvent(null, this);
+        RelicEvent.OnPlayerTurnEnd();
         if (!GuidanceManager.Instance.guidanceCheckList[15])
             StartCoroutine(GuidanceManager.Instance.SelfActionGuidance(4));
     }

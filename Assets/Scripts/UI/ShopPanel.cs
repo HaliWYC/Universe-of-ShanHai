@@ -25,7 +25,7 @@ public class ShopPanel : Singleton<ShopPanel>
     public int numOfCard = 8;
 
     [Header("Relic")]
-    private List<RelicData> waitingRelicList = new();
+    [SerializeField] private List<RelicData> waitingRelicList = new();
     public List<RelicData> relicList = new();
     public int numOfRelic = 4;
     private List<RelicData> playerRelics;
@@ -49,13 +49,19 @@ public class ShopPanel : Singleton<ShopPanel>
     {
         cardList.Clear();
         relicList.Clear();
-        for (int i = 0; i < CardShopHolder.childCount; i++)
+        if (CardShopHolder.childCount > 0)
         {
-            Destroy(CardShopHolder.GetChild(i).gameObject);
+            for (int i = 0; i < CardShopHolder.childCount; i++)
+            {
+                Destroy(CardShopHolder.GetChild(i).gameObject);
+            }
         }
-        for (int i = 0; i < RelicShopHolder.childCount; i++)
+        if (RelicShopHolder.childCount > 0)
         {
-            Destroy(RelicShopHolder.GetChild(i).gameObject);
+            for (int i = 0; i < RelicShopHolder.childCount; i++)
+            {
+                Destroy(RelicShopHolder.GetChild(i).gameObject);
+            }
         }
 
     }
@@ -160,7 +166,7 @@ public class ShopPanel : Singleton<ShopPanel>
             var Relic = Instantiate(relicPrefab, RelicShopHolder.transform).GetComponent<ShopRelicUI>();
             Relic.gameObject.transform.localScale = Vector3.zero;
             Relic.Parent = RelicShopHolder;
-            Relic.SetRelic(waitingRelicList[i]);
+            Relic.SetRelicUI(waitingRelicList[i]);
             Relic.isMoving = true;
             Relic.gameObject.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack).SetDelay(i * 0.3f).onComplete = () => { Relic.isMoving = false; };
         }

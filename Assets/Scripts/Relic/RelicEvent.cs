@@ -59,6 +59,29 @@ public static class RelicEvent
     {
         OnEnemyAttackEndEvent?.Invoke();
     }
+    public static event Action<CharacterBase> OnBeforeCharacterDeadEvent;
+    public static void OnBeforeCharacterDead(CharacterBase character)
+    {
+        OnBeforeCharacterDeadEvent?.Invoke(character);
+    }
+    public static event Action<CharacterBase> OnAfterCharacterDeadEvent;
+    public static void OnAfterCharacterDead(CharacterBase character)
+    {
+        OnAfterCharacterDeadEvent?.Invoke(character);
+    }
+    public static event Action<CharacterBase, int> OnBeforeFatalDamageEvent;
+    public static void OnBeforeFatalDamage(CharacterBase character, int damage)
+    {
+        OnBeforeFatalDamageEvent?.Invoke(character, damage);
+    }
+
+    public static event Action<CharacterBase, int> OnAfterFatalDamageEvent;
+    public static void OnAfterFatalDamage(CharacterBase character, int damage)
+    {
+        OnAfterFatalDamageEvent?.Invoke(character, damage);
+    }
+
+
 
     //Card
     public static event Action OnCardDrawEvent;
@@ -79,7 +102,7 @@ public static class RelicEvent
 
     //Turn
     public static event Action OnPlayerTurnBeginEvent;
-    public static void OnPlyaerTurnBegin()
+    public static void OnPlayerTurnBegin()
     {
         OnPlayerTurnBeginEvent?.Invoke();
     }

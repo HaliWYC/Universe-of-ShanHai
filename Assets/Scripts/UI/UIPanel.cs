@@ -22,12 +22,19 @@ public class UIPanel : Singleton<UIPanel>
 
     public void InitRelics()
     {
-        foreach (var relic in GameManager.Instance.player.characterData.relics)
+        var relicList = GameManager.Instance.player.characterData.relics;
+        if (relicHolder.childCount > 0)
+        {
+            for (int i = 0; i < relicHolder.childCount; i++)
+            {
+                Destroy(relicHolder.GetChild(i).gameObject);
+            }
+        }
+        foreach (var relic in relicList)
         {
             var relicUI = Instantiate(relicPrefab, relicHolder).GetComponent<RelicUI>();
             relicUI.SetRelic(relic);
             relicUI.UpdateRelicValue(relic);
-            relic.isEquipped = true;
         }
     }
 

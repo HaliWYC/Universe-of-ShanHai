@@ -17,7 +17,6 @@ public abstract class RelicData : ScriptableObject
     [Header("bool")]
     public bool designPrice;
     public bool isAvailable;
-    public bool isEquipped = false;
     private void OnEnable()
     {
         RelicEvent.OnNewGameEvent += OnNewGame;
@@ -37,10 +36,14 @@ public abstract class RelicData : ScriptableObject
         RelicEvent.OnCardPlayEvent += OnCardPlay;
         RelicEvent.OnCardDiscardEvent += OnCardDiscard;
 
-        RelicEvent.OnPlayerTurnBeginEvent += OnPlyaerTurnBegin;
+        RelicEvent.OnPlayerTurnBeginEvent += OnPlayerTurnBegin;
         RelicEvent.OnPlayerTurnEndEvent += OnPlayerTurnEnd;
         RelicEvent.OnEnemyTurnBeginEvent += OnEnemyTurnBegin;
         RelicEvent.OnEnemyTurnEndEvent += OnEnemyTurnEnd;
+        RelicEvent.OnBeforeCharacterDeadEvent += OnBeforeCharacterDead;
+        RelicEvent.OnAfterCharacterDeadEvent += OnAfterCharacterDead;
+        RelicEvent.OnBeforeFatalDamageEvent += OnBeforeFatalDamage;
+        RelicEvent.OnAfterFatalDamageEvent += OnAfterFatalDamage;
 
         RelicEvent.OnGainMoneyEvent += OnGainMoney;
         RelicEvent.OnLoseMoneyEvent += OnLoseMoney;
@@ -66,14 +69,13 @@ public abstract class RelicData : ScriptableObject
         RelicEvent.OnCardPlayEvent -= OnCardPlay;
         RelicEvent.OnCardDiscardEvent -= OnCardDiscard;
 
-        RelicEvent.OnPlayerTurnBeginEvent -= OnPlyaerTurnBegin;
+        RelicEvent.OnPlayerTurnBeginEvent -= OnPlayerTurnBegin;
         RelicEvent.OnPlayerTurnEndEvent -= OnPlayerTurnEnd;
         RelicEvent.OnEnemyTurnBeginEvent -= OnEnemyTurnBegin;
         RelicEvent.OnEnemyTurnEndEvent -= OnEnemyTurnEnd;
 
         RelicEvent.OnGainMoneyEvent -= OnGainMoney;
         RelicEvent.OnLoseMoneyEvent -= OnLoseMoney;
-        isEquipped = false;
         isAvailable = false;
     }
 
@@ -93,6 +95,10 @@ public abstract class RelicData : ScriptableObject
     public abstract void OnPlayerAttackEnd();
     public abstract void OnEnemyAttackBegin();
     public abstract void OnEnemyAttackEnd();
+    public abstract void OnBeforeCharacterDead(CharacterBase character);
+    public abstract void OnAfterCharacterDead(CharacterBase character);
+    public abstract void OnBeforeFatalDamage(CharacterBase character, int damage);
+    public abstract void OnAfterFatalDamage(CharacterBase character, int damage);
 
     //Card
     public abstract void OnCardDraw();
@@ -100,7 +106,7 @@ public abstract class RelicData : ScriptableObject
     public abstract void OnCardDiscard();
 
     //Turn
-    public abstract void OnPlyaerTurnBegin();
+    public abstract void OnPlayerTurnBegin();
     public abstract void OnPlayerTurnEnd();
     public abstract void OnEnemyTurnBegin();
     public abstract void OnEnemyTurnEnd();

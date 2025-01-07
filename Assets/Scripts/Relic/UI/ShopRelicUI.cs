@@ -12,6 +12,7 @@ public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHand
     public TextMeshProUGUI price;
     public Color priceColor;
     public bool isMoving;
+    private int relicPrice;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -39,18 +40,29 @@ public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHand
         UIPanel.Instance.relicToolTip.gameObject.SetActive(false);
     }
 
-    public void SetRelic(RelicData relic)
+    public void SetRelicUI(RelicData relic)
     {
         relicData = relic;
         relicIcon.sprite = relic.relicIcon;
-        relic.relicPrice = RelicManager.Instance.GetRelicPriceByRarity(relic);
-        relic.relicPrice = Convert.ToInt32(math.round((1 + UnityEngine.Random.Range(-0.1f, 0.1f)) * relic.relicPrice));
+        relicPrice = RelicManager.Instance.GetRelicPriceByRarity(relic);
+        if (!relic.designPrice)
+        {
+            price.text = Convert.ToInt32(math.round((1 + UnityEngine.Random.Range(-0.1f, 0.1f)) * relicPrice)).ToString();
+        }
+        else
+        {
+            price.text = relic.relicPrice.ToString();
+        }
         UpdateRelicUI();
+    }
+
+    public void SetRelicPrice(int newPrice)
+    {
+        relicPrice = newPrice;
     }
 
     public void UpdateRelicUI()
     {
-        price.text = relicData.relicPrice.ToString();
-        price.color = GameManager.Instance.player.characterData.Money > relicData.relicPrice ? priceColor : Color.red;
+        price.color = GameManager.Instance.player.characterData.Money > relicPrice ? priceColor : Color.red;
     }
 }

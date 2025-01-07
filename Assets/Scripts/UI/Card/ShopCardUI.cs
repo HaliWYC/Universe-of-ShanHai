@@ -111,9 +111,12 @@ public class ShopCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void SetUpTag()
     {
-        for (int i = 0; i < tagContainer.childCount; i++)
+        if (tagContainer.childCount > 0)
         {
-            Destroy(tagContainer.GetChild(i).gameObject);
+            for (int i = 0; i < tagContainer.childCount; i++)
+            {
+                Destroy(tagContainer.GetChild(i).gameObject);
+            }
         }
         for (int i = 0; i < cardData.cardTagList.Count; i++)
         {

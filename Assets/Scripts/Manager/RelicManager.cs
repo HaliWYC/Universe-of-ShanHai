@@ -20,7 +20,6 @@ public class RelicManager : Singleton<RelicManager>
     protected override void Awake()
     {
         base.Awake();
-        SetRelicAvailable();
         InitializeRelicDataList();
     }
 
@@ -29,6 +28,8 @@ public class RelicManager : Singleton<RelicManager>
         for (int i = 0; i < alwaysAvailableRelicList.Count; i++)
         {
             alwaysAvailableRelicList[i].isAvailable = true;
+            if (!relicDataList.Contains(alwaysAvailableRelicList[i]))
+                relicDataList.Add(alwaysAvailableRelicList[i]);
         }
     }
     private void InitRelicList()
@@ -53,7 +54,7 @@ public class RelicManager : Singleton<RelicManager>
         mythicalRelicList.Clear();
         for (int i = 0; i < availableRelicList.Count; i++)
         {
-            switch (relicDataList[i].relicRarity)
+            switch (availableRelicList[i].relicRarity)
             {
                 case Rarity.Normal:
                     normalRelicList.Add(availableRelicList[i]);
@@ -87,6 +88,7 @@ public class RelicManager : Singleton<RelicManager>
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
             relicDataList = new List<RelicData>(handle.Result);
+            SetRelicAvailable();
             InitRelicList();
         }
         else
@@ -114,7 +116,7 @@ public class RelicManager : Singleton<RelicManager>
     {
         if (availableRelicList.Contains(relic))
         {
-            GameManager.Instance.player.characterData.relics.Add(relic);
+            GameManager.Instance.player.characterData.relics.Add(Instantiate(relic));
             UIPanel.Instance.InitRelics();
         }
     }
@@ -125,13 +127,13 @@ public class RelicManager : Singleton<RelicManager>
             return relic.relicPrice;
         return relic.relicRarity switch
         {
-            Rarity.Normal => 70,
-            Rarity.Superior => 140,
-            Rarity.Elite => 220,
-            Rarity.Epic => 350,
-            Rarity.Legendary => 500,
-            Rarity.Mythical => 800,
-            _ => 70
+            Rarity.Normal => 100,
+            Rarity.Superior => 200,
+            Rarity.Elite => 350,
+            Rarity.Epic => 500,
+            Rarity.Legendary => 800,
+            Rarity.Mythical => 1200,
+            _ => 1000
         };
     }
 

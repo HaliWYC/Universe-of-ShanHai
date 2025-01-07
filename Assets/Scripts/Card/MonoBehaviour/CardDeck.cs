@@ -62,6 +62,7 @@ public class CardDeck : Singleton<CardDeck>
             {
                 var Card = CreateCardFromData(drawDeck[0]);
                 drawDeck.RemoveAt(0);
+                RelicEvent.OnCardDraw();
                 drawCardCountEvent.RaiseEvent(drawDeck.Count, this);
                 handDeck.Add(Card);
             }
@@ -123,6 +124,7 @@ public class CardDeck : Singleton<CardDeck>
             discardDeck.Add(card.cardData);
         handDeck.Remove(card);
         CardManager.Instance.ReturnCard(card.gameObject);
+        RelicEvent.OnCardDiscard(); //弃牌时触发遗物事件
         discardCardCountEvent.RaiseEvent(discardDeck.Count, this);
         SetCardLayout(0, false);
     }

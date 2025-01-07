@@ -56,16 +56,19 @@ public class TurnBaseManager : MonoBehaviour
     public void PlayerTurnBegin()
     {
         playerTurnBegin.RaiseEvent(null, this);
+        RelicEvent.OnPlayerTurnBegin();
     }
     public void EnemyTurnBegin()
     {
         isEnemyTurn = true;
         enemyTurnBegin.RaiseEvent(null, this);
+        RelicEvent.OnEnemyTurnBegin();
     }
     public void EnemyTurnEnd()
     {
         isEnemyTurn = false;
         enemyTurnEnd.RaiseEvent(null, this);
+        RelicEvent.OnEnemyTurnEnd();
     }
 
     public void AfterLoadRoomEvent(object data)

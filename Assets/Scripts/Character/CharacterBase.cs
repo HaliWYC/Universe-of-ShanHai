@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,6 +13,7 @@ public class CharacterBase : MonoBehaviour, IPointerClickHandler, IPointerExitHa
     public int MaxHP { get => hp.maxValue; }
 
     [Header("Bool")]
+    public bool isDamageValid;
     public bool isDead;
 
     [Header("Component")]
@@ -51,22 +53,47 @@ public class CharacterBase : MonoBehaviour, IPointerClickHandler, IPointerExitHa
 
     public virtual void TakeDamage(float damage)
     {
+        isDamageValid = true;
         var currentDamage = (damage - shield.currentValue) >= 0 ? (damage - shield.currentValue) : 0;
         var currentShield = (damage - shield.currentValue) >= 0 ? 0 : (shield.currentValue - damage);
         shield.SetValue((int)currentShield);
         if (CurrentHP > currentDamage)
         {
-            CurrentHP -= (int)currentDamage;
-            animator.SetTrigger("hurt");
+            if (isDamageValid)
+            {
+                CurrentHP -= (int)currentDamage;
+                animator.SetTrigger("hurt");
+            }
         }
         else
         {
-            CurrentHP = 0;
-            isDead = true;
-            animator.SetBool("isDead", isDead);
-            characterDeadEvent.RaiseEvent(this, this);
+            RelicEvent.OnBeforeFatalDamage(this, (int)damage);
+            if (isDamageValid)
+            {
+                CurrentHP = 0;
+            }
+            RelicEvent.OnAfterFatalDamage(this, (int)damage);
+            RelicEvent.OnBeforeCharacterDead(this);
+            if (CurrentHP <= 0)
+            {
+                isDead = true;
+                animator.SetBool("isDead", isDead);
+            }
+            RelicEvent.OnAfterCharacterDead(this);
+            StartCoroutine(CharacterReviveAnimation());
+            if (isDead)
+            {
+                characterDeadEvent.RaiseEvent(this, this);
+            }
         }
+        healthBarController.UpdateHealthBar();
         healthBarController.UpdateBuff();
+    }
+
+    private IEnumerator CharacterReviveAnimation()
+    {
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7);
+        animator.SetBool("isDead", isDead);
     }
 
     public void UpdateShield(float amount)

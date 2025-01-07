@@ -16,9 +16,10 @@ MonoBehaviour:
   relicName: Shuriken
   relicIcon: {fileID: 7141631515291247452, guid: 02b808f4e231e4f2fa911bc070043b1d, type: 3}
   relicRarity: 1
-  description: For each card you play, you gain a small charge. When you get 3 charge,
+  description: For each card you play, you gain a charge. When you get 3 charge,
     deal 5 damage to the next enemy that attacks, then empty the charge.
-  relicPrice: 140
+  relicPrice: 207
   relicValue: 0
+  designPrice: 0
   isAvailable: 1
   isEquipped: 0

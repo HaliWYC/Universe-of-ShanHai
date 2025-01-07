@@ -165,6 +165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alwaysAvailableRelicList:
   - {fileID: 11400000, guid: e6f14072b06eb45949243fc37be94a4e, type: 2}
+  - {fileID: 11400000, guid: a34628db6246d4e27a7f877634895483, type: 2}
+  - {fileID: 11400000, guid: a7fbd0a72cd2b403e9fb0e664bbf1bfb, type: 2}
   availableRelicList: []
   normalRelicList: []
   superiorRelicList: []
@@ -6699,6 +6701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644b6242a007545e58840c8868ef72d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFolder: 
 --- !u!1 &1138436152
 GameObject:
   m_ObjectHideFlags: 0
@@ -9866,7 +9869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cd2cf48100b448e8f25d812463b55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerEndEvent: {fileID: 11400000, guid: d5441d5b38e3c4b3baaec80057ea9699, type: 2}
+  playerTurnEndEvent: {fileID: 11400000, guid: d5441d5b38e3c4b3baaec80057ea9699, type: 2}
   endTurnButton: {fileID: 1984478517}
   popTextPrefab: {fileID: 1210801906503925337, guid: f57d4727677d9477ea20db17e2154adc, type: 3}
 --- !u!114 &1552879771
@@ -11295,6 +11298,7 @@ MonoBehaviour:
   characterData: {fileID: 0}
   hp: {fileID: 11400000, guid: 02a537136a5584e68a1520be85399b43, type: 2}
   shield: {fileID: 11400000, guid: 731a86ec9ca854c4882724ba5668bc2f, type: 2}
+  isDamageValid: 0
   isDead: 0
   animatorSkillSpeed: 0
   healthBarController: {fileID: 0}
