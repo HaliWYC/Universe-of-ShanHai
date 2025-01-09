@@ -301,9 +301,10 @@ MonoBehaviour:
   RelicShopHolder: {fileID: 2709610}
   backButton: {fileID: 1560865950}
   loadMapEvent: {fileID: 11400000, guid: 85202fe1d19d64f879a48e67d030062e, type: 2}
-  shopRarity: -1
+  shopRarity: 31
   cardList: []
   numOfCard: 8
+  waitingRelicList: []
   relicList: []
   numOfRelic: 4
 --- !u!1 &326277102

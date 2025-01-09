@@ -30,16 +30,16 @@ public class CardDeck : Singleton<CardDeck>
         ShuffleDeck();
     }
 
-    [ContextMenu("Draw Card")]
-    public void DrawACard()
-    {
-        DrawCard(3);
-    }
+    // [ContextMenu("Draw Card")]
+    // public void DrawACard()
+    // {
+    //     DrawCard(3);
+    // }
 
     public void NewTurnDrawCards()
     {
-        DrawCard(GameManager.Instance.player.cardDrawEachTurn);
-        SetCardLayout(GameManager.Instance.player.cardDrawEachTurn, true);
+        DrawCard(GameManager.Instance.player.characterData.cardDrawEachTurn);
+        SetCardLayout(GameManager.Instance.player.characterData.cardDrawEachTurn, true);
     }
 
     /// <summary>

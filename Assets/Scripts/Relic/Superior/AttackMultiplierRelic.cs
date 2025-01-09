@@ -1,11 +1,8 @@
-using Unity.Mathematics;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Shuriken", menuName = "Relic/Superior/Shuriken")]
-public class Shuriken : RelicData
+[CreateAssetMenu(fileName = "AttackMultiplierRelic", menuName = "Relic/Superior/AttackMultiplierRelic")]
+public class AttackMultiplierRelic : RelicData
 {
-    private CharacterBase lastTarget;
-
     public override void OnAfterCharacterDead(CharacterBase character)
     {
 
@@ -36,25 +33,9 @@ public class Shuriken : RelicData
 
     }
 
-    public override void OnCardPlay(CharacterBase from, CharacterBase target)
+    public override void OnCardPlay(CharacterBase self, CharacterBase target)
     {
-        if (!from.characterData.relics.Contains(this)) return;
-        if (target != null)
-        {
-            lastTarget = target;
-        }
-        relicValue++;
-        if (relicValue == 4)
-        {
-            relicValue = 0;
-            if (lastTarget != null)
-            {
-                PoolTool.Instance.InitSoundEffect(AudioManager.Instance.soundDetailList.GetSoundDetails("Shuriken"));
-                lastTarget.TakeDamage(5);
-                GamePlayPanel.Instance.PopText(lastTarget.transform.position, 5, CreateInstance<DamageEffect>());
-            }
-        }
-        UIPanel.Instance.UpdateRelicsValue();
+
     }
 
     public override void OnCreate()
@@ -82,9 +63,10 @@ public class Shuriken : RelicData
 
     }
 
-    public override void OnEquip(RelicData relic)
+    public override void OnEquip(CharacterBase character)
     {
-
+        if (!character.characterData.relics.Contains(this)) return;
+        character.characterData.baseAttackMultiplier += relicValue;
     }
 
     public override void OnGainMoney()
@@ -94,8 +76,7 @@ public class Shuriken : RelicData
 
     public override void OnLoadMap()
     {
-        relicValue = 0;
-        UIPanel.Instance.UpdateRelicsValue();
+
     }
 
     public override void OnLoseMoney()
@@ -110,8 +91,7 @@ public class Shuriken : RelicData
 
     public override void OnNewRoom()
     {
-        relicValue = 0;
-        UIPanel.Instance.UpdateRelicsValue();
+
     }
 
     public override void OnPlayerAttackBegin()
@@ -124,18 +104,19 @@ public class Shuriken : RelicData
 
     }
 
-    public override void OnPlayerTurnEnd()
-    {
-
-    }
-
     public override void OnPlayerTurnBegin()
     {
 
     }
 
-    public override void OnUnequip()
+    public override void OnPlayerTurnEnd()
     {
 
+    }
+
+    public override void OnUnequip(CharacterBase character)
+    {
+        if (!character.characterData.relics.Contains(this)) return;
+        character.characterData.baseAttackMultiplier -= relicValue;
     }
 }

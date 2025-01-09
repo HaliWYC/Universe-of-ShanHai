@@ -24,6 +24,8 @@ public class RelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler
     public void SetRelic(RelicData relic)
     {
         relicData = relic;
+        if (!relic.showRelicValue)
+            relicValue.gameObject.SetActive(false);
         relicIcon.sprite = relic.relicIcon;
     }
 

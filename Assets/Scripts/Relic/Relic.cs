@@ -17,6 +17,7 @@ public abstract class RelicData : ScriptableObject
     [Header("bool")]
     public bool designPrice;
     public bool isAvailable;
+    public bool showRelicValue;
     private void OnEnable()
     {
         RelicEvent.OnNewGameEvent += OnNewGame;
@@ -76,7 +77,6 @@ public abstract class RelicData : ScriptableObject
 
         RelicEvent.OnGainMoneyEvent -= OnGainMoney;
         RelicEvent.OnLoseMoneyEvent -= OnLoseMoney;
-        isAvailable = false;
     }
 
 
@@ -87,8 +87,8 @@ public abstract class RelicData : ScriptableObject
 
     //Initialize relic
     public abstract void OnCreate();
-    public abstract void OnEquip(RelicData relic);
-    public abstract void OnUnequip();
+    public abstract void OnEquip(CharacterBase character);
+    public abstract void OnUnequip(CharacterBase character);
 
     //Combat
     public abstract void OnPlayerAttackBegin();

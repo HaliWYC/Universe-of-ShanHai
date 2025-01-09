@@ -61,6 +61,7 @@ MonoBehaviour:
   characterData: {fileID: 0}
   hp: {fileID: 11400000, guid: 077fb69cca458486383a7864f767a327, type: 2}
   shield: {fileID: 11400000, guid: b806da268f7784935b8e6a45d235c88a, type: 2}
+  isDamageValid: 0
   isDead: 0
   animatorSkillSpeed: 1
   healthBarController: {fileID: 0}

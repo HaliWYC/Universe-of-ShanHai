@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class RelicManager : Singleton<RelicManager>
 {
-    private List<RelicData> relicDataList;
+    [SerializeField] private List<RelicData> relicDataList;
     [SerializeField] private List<RelicData> alwaysAvailableRelicList;
     public List<RelicData> availableRelicList;
     public List<RelicData> normalRelicList;
@@ -23,7 +24,7 @@ public class RelicManager : Singleton<RelicManager>
         InitializeRelicDataList();
     }
 
-    public void SetRelicAvailable()
+    public void SetAlwaysAvailableRelic()
     {
         for (int i = 0; i < alwaysAvailableRelicList.Count; i++)
         {
@@ -88,7 +89,7 @@ public class RelicManager : Singleton<RelicManager>
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
             relicDataList = new List<RelicData>(handle.Result);
-            SetRelicAvailable();
+            SetAlwaysAvailableRelic();
             InitRelicList();
         }
         else
@@ -117,6 +118,12 @@ public class RelicManager : Singleton<RelicManager>
         if (availableRelicList.Contains(relic))
         {
             GameManager.Instance.player.characterData.relics.Add(Instantiate(relic));
+            foreach (var item in GameManager.Instance.player.characterData.relics)
+            {
+                if (item == relic)
+                    Debug.Log("1");
+            }
+            relic.OnEquip(GameManager.Instance.player);
             UIPanel.Instance.InitRelics();
         }
     }
@@ -125,7 +132,7 @@ public class RelicManager : Singleton<RelicManager>
     {
         if (relic.designPrice)
             return relic.relicPrice;
-        return relic.relicRarity switch
+        var price = relic.relicRarity switch
         {
             Rarity.Normal => 100,
             Rarity.Superior => 200,
@@ -133,13 +140,13 @@ public class RelicManager : Singleton<RelicManager>
             Rarity.Epic => 500,
             Rarity.Legendary => 800,
             Rarity.Mythical => 1200,
-            _ => 1000
+            _ => 1000,
         };
+        return Convert.ToInt32(math.round((1 + UnityEngine.Random.Range(-0.1f, 0.1f)) * price));
     }
 
     public List<RelicData> GetRelicRarityList(MultipleRarity relicRarity)
     {
-
         return relicRarity switch
         {
             MultipleRarity.Normal => normalRelicList,
@@ -161,6 +168,6 @@ public class RelicManager : Singleton<RelicManager>
             MultipleRarity relicRarity = (MultipleRarity)Enum.Parse(typeof(MultipleRarity), rarities[i]);
             relicList.AddRange(GetRelicRarityList(relicRarity));
         }
-        return relicDataList;
+        return relicList;
     }
 }

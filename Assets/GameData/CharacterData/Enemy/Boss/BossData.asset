@@ -15,5 +15,14 @@ MonoBehaviour:
   maxHP: 100
   baseAttackMultiplier: 1
   currentAttackMultiplier: 0
+  baseAttackIncrement: 0
+  nextAttackIncrement: 0
   baseDefenseMultiplier: 1
   currentDefenseMultiplier: 0
+  baseDefenseIncrement: 0
+  nextDefenseIncrement: 0
+  buffList: []
+  relics: []
+  Money: 500
+  mana: 0
+  cardDrawEachTurn: 0

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 993374532bc1d4fa58a32f87fd00d724, type: 3}
-  m_Name: MagicScroll
+  m_Name: Power Helmet
   m_EditorClassIdentifier: 
-  cardID: 5
-  cardName: MagicScroll
-  cardImage: {fileID: 936532887, guid: 4be2b2d44d250ee42b80cd311728b13a, type: 3}
+  cardID: 4
+  cardName: Power Helmet
+  cardImage: {fileID: -55296467, guid: 4be2b2d44d250ee42b80cd311728b13a, type: 3}
   cardCost: 2
-  cardType: 0
+  cardType: 2
   cardRarity: 1
   cardTagList: 
-  cardDescription: Decrease Damage Value by  <color="Grey">#30#%</color> 2 turns
+  cardDescription: Increase Damage Value by <color="Yellow">#30#%</color> 2 turns
   effectList:
-  - {fileID: 11400000, guid: 3fff50b2e0676463a9abbae4230e773a, type: 2}
+  - {fileID: 11400000, guid: 77aae20ceff1842d7a8f366afafae136, type: 2}

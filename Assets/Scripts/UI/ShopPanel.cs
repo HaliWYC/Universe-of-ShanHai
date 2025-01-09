@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class ShopPanel : Singleton<ShopPanel>
 {
@@ -40,7 +40,7 @@ public class ShopPanel : Singleton<ShopPanel>
 
     private void OnEnable()
     {
-        RelicManager.Instance.SetRelicAvailable();
+        RelicManager.Instance.SetAlwaysAvailableRelic();
         InitCardList();
         InitRelicList();
     }

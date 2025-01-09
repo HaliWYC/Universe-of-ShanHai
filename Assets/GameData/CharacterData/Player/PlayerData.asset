@@ -24,3 +24,5 @@ MonoBehaviour:
   buffList: []
   relics: []
   Money: 0
+  mana: 3
+  cardDrawEachTurn: 4

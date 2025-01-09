@@ -27,15 +27,15 @@ public static class RelicEvent
     {
         OnCreateEvent?.Invoke();
     }
-    public static event Action<RelicData> OnEquipEvent;
-    public static void OnEquip(RelicData relic)
+    public static event Action<CharacterBase> OnEquipEvent;
+    public static void OnEquip(CharacterBase character)
     {
-        OnEquipEvent?.Invoke(relic);
+        OnEquipEvent?.Invoke(character);
     }
-    public static event Action OnUnequipEvent;
-    public static void OnUnequip()
+    public static event Action<CharacterBase> OnUnequipEvent;
+    public static void OnUnequip(CharacterBase character)
     {
-        OnUnequipEvent?.Invoke();
+        OnUnequipEvent?.Invoke(character);
     }
 
     //Combat

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TurnBaseManager : MonoBehaviour
+public class TurnBaseManager : Singleton<TurnBaseManager>
 {
     private bool isPlayerTurn = false;
     private bool isEnemyTurn = false;
@@ -15,6 +15,13 @@ public class TurnBaseManager : MonoBehaviour
     public ObjectEventSO playerTurnBegin;
     public ObjectEventSO enemyTurnBegin;
     public ObjectEventSO enemyTurnEnd;
+    private Player Player;
+
+
+    private void Start()
+    {
+        Player = GameManager.Instance.player;
+    }
 
     private void Update()
     {
@@ -74,11 +81,11 @@ public class TurnBaseManager : MonoBehaviour
     public void AfterLoadRoomEvent(object data)
     {
         Room currentRoom = data as Room;
-
+        Player.hp.maxValue = Player.characterData.maxHP;
         switch (currentRoom.roomData.roomType)
         {
             case RoomType.Guidance:
-                GameManager.Instance.player.gameObject.SetActive(true);
+                Player.gameObject.SetActive(true);
                 GameStart();
                 if (!GuidanceManager.Instance.guidanceCheckList[3])
                     StartCoroutine(GuidanceManager.Instance.EnemyGuidance(5));
@@ -86,27 +93,27 @@ public class TurnBaseManager : MonoBehaviour
             case RoomType.MiniorEnemy:
             case RoomType.EliteEnemy:
             case RoomType.Boss:
-                GameManager.Instance.player.gameObject.SetActive(true);
+                Player.gameObject.SetActive(true);
                 GameStart();
                 GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
             case RoomType.Shop:
-                GameManager.Instance.player.gameObject.SetActive(false);
+                Player.gameObject.SetActive(false);
                 if (!GuidanceManager.Instance.guidanceCheckList[20])
                     StartCoroutine(GuidanceManager.Instance.ShopGuidance(8));
                 GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
             case RoomType.Treasure:
-                GameManager.Instance.player.gameObject.SetActive(false);
+                Player.gameObject.SetActive(false);
                 if (!GuidanceManager.Instance.guidanceCheckList[19])
                     StartCoroutine(GuidanceManager.Instance.TreasureGuidance(5));
                 GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
             case RoomType.RestRoom:
-                GameManager.Instance.player.gameObject.SetActive(true);
+                Player.gameObject.SetActive(true);
                 if (!GuidanceManager.Instance.guidanceCheckList[21])
                     StartCoroutine(GuidanceManager.Instance.RestRoomGuidance(5));
-                GameManager.Instance.player.GetComponent<PlayerAnimation>().SetSleepAnimation();
+                Player.GetComponent<PlayerAnimation>().SetSleepAnimation();
                 GuidanceManager.Instance.guidanceList[18].SetActive(false);
                 break;
         }
@@ -116,15 +123,14 @@ public class TurnBaseManager : MonoBehaviour
     public void OnStopTurnSystem(object obj)
     {
         battleEnd = true;
-        GameManager.Instance.player.gameObject.SetActive(false);
+        Player.gameObject.SetActive(false);
     }
 
     public void NewGame()
     {
-        Player player = GameManager.Instance.player;
-        player.hp.maxValue = player.templateCharacterData.maxHP;
-        player.CurrentHP = player.MaxHP;
-        player.CurrentMana = player.playerMana.maxValue;
-        player.isDead = false;
+        Player.hp.maxValue = Player.templateCharacterData.maxHP;
+        Player.CurrentHP = Player.MaxHP;
+        Player.CurrentMana = Player.playerMana.maxValue;
+        Player.isDead = false;
     }
 }

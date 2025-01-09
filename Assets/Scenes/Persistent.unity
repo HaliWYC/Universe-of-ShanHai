@@ -163,10 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c46d5f817b244c69b4e167cce3cdecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alwaysAvailableRelicList:
-  - {fileID: 11400000, guid: e6f14072b06eb45949243fc37be94a4e, type: 2}
-  - {fileID: 11400000, guid: a34628db6246d4e27a7f877634895483, type: 2}
-  - {fileID: 11400000, guid: a7fbd0a72cd2b403e9fb0e664bbf1bfb, type: 2}
+  alwaysAvailableRelicList: []
   availableRelicList: []
   normalRelicList: []
   superiorRelicList: []
@@ -11311,8 +11308,6 @@ MonoBehaviour:
   buffSound: buff
   debuffSound: debuff
   playerMana: {fileID: 11400000, guid: 4d4472c0d44b44622acf09cceadd6ec6, type: 2}
-  maxMana: 3
-  cardDrawEachTurn: 4
 --- !u!114 &1637930221
 MonoBehaviour:
   m_ObjectHideFlags: 0

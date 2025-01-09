@@ -5,9 +5,10 @@ public class TaiJi_Trigram : RelicData
 {
     public override void OnAfterCharacterDead(CharacterBase character)
     {
-        if (!character.characterData.relics.Contains(this)) return;
+        if (!character.characterData.relics.Exists(r => r.relicID == relicID)) return;
         if (character.isDead && relicValue > 0)
         {
+            //TODO:Sound
             character.isDead = false;
             character.CurrentHP = character.MaxHP;
             relicValue--;
@@ -70,7 +71,7 @@ public class TaiJi_Trigram : RelicData
 
     }
 
-    public override void OnEquip(RelicData relic)
+    public override void OnEquip(CharacterBase character)
     {
 
     }
@@ -120,7 +121,7 @@ public class TaiJi_Trigram : RelicData
 
     }
 
-    public override void OnUnequip()
+    public override void OnUnequip(CharacterBase character)
     {
 
     }

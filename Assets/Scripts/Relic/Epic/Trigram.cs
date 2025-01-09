@@ -20,9 +20,10 @@ public class Trigram : RelicData
 
     public override void OnBeforeFatalDamage(CharacterBase character, int damage)
     {
-        if (!character.characterData.relics.Contains(this)) return;
+        if (!character.characterData.relics.Exists(r => r.relicID == relicID)) return;
         if (relicValue > 0)
         {
+            //TODO:Sound
             character.isDamageValid = false;
             relicValue--;
         }
@@ -69,7 +70,7 @@ public class Trigram : RelicData
 
     }
 
-    public override void OnEquip(RelicData relic)
+    public override void OnEquip(CharacterBase character)
     {
 
     }
@@ -119,7 +120,7 @@ public class Trigram : RelicData
 
     }
 
-    public override void OnUnequip()
+    public override void OnUnequip(CharacterBase character)
     {
 
     }

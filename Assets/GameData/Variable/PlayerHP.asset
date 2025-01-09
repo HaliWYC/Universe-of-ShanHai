@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerHP
   m_EditorClassIdentifier: 
   maxValue: 60
-  currentValue: 60
+  currentValue: 1
   ValueChangeEvent: {fileID: 11400000, guid: b5cb107814a6c489181a773178d8ab9f, type: 2}
   description: 

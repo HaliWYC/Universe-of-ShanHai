@@ -23,9 +23,9 @@ public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHand
         }
         if (eventData.clickCount % 2 == 0)
         {
-            if (GameManager.Instance.player.characterData.Money >= relicData.relicPrice)
+            if (GameManager.Instance.player.characterData.Money >= relicPrice)
             {
-                GameManager.Instance.player.characterData.Money -= relicData.relicPrice;
+                GameManager.Instance.player.characterData.Money -= relicPrice;
                 RelicManager.Instance.EquipRelic(relicData);
                 UIPanel.Instance.UpdateCurrencyText();
                 ShopPanel.Instance.UpdateAllShopUI();
@@ -44,25 +44,19 @@ public class ShopRelicUI : MonoBehaviour, IPointerClickHandler, IPointerExitHand
     {
         relicData = relic;
         relicIcon.sprite = relic.relicIcon;
-        relicPrice = RelicManager.Instance.GetRelicPriceByRarity(relic);
-        if (!relic.designPrice)
-        {
-            price.text = Convert.ToInt32(math.round((1 + UnityEngine.Random.Range(-0.1f, 0.1f)) * relicPrice)).ToString();
-        }
-        else
-        {
-            price.text = relic.relicPrice.ToString();
-        }
+        relicPrice = RelicManager.Instance.GetRelicPriceByRarity(relicData);
         UpdateRelicUI();
     }
 
     public void SetRelicPrice(int newPrice)
     {
         relicPrice = newPrice;
+        UpdateRelicUI();
     }
 
     public void UpdateRelicUI()
     {
+        price.text = relicPrice.ToString();
         price.color = GameManager.Instance.player.characterData.Money > relicPrice ? priceColor : Color.red;
     }
 }

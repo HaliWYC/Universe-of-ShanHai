@@ -15,6 +15,66 @@ MonoBehaviour:
   m_GroupName: Relic
   m_GUID: 623cb8ed219584a809207480b29a7f6d
   m_SerializeEntries:
+  - m_GUID: 69710fff9c4de46938f52f7ca488822e
+    m_Address: Silver Ring
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 799dff07f89f445c59e67c90e7fc1f3a
+    m_Address: Jade Ring
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a34628db6246d4e27a7f877634895483
+    m_Address: TaiJi_Trigram
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7fbd0a72cd2b403e9fb0e664bbf1bfb
+    m_Address: Trigram
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a85fecda483ad4f54b83ad4fcdef3153
+    m_Address: MagicBook
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acea0816ba6894c75b6a4c0bd874b8e8
+    m_Address: Blood Ring
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0739b7f8c6714410808f7aa576a5a5d
+    m_Address: Green Belt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3587fa0c73d246e28fc095fd2db2a76
+    m_Address: Advance Magic Book
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e30874163a2db43099d8af46287b36b1
+    m_Address: Emerald Ring
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e39510acae1f04ad3881add469927afe
+    m_Address: Imperial Magic Book
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RelicData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e6f14072b06eb45949243fc37be94a4e
     m_Address: Shuriken
     m_ReadOnly: 0

@@ -21,4 +21,8 @@ public class CharacterDataSO : ScriptableObject
 
     [Header("Currency")]
     public int Money;
+
+    [Header("Player")]
+    public int mana;
+    public int cardDrawEachTurn;
 }

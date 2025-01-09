@@ -1,13 +1,8 @@
 public class Player : CharacterBase, ISavable
 {
     public IntVariable playerMana;
-    public int maxMana;
-    public int cardDrawEachTurn;
     private int manaIncrementCounter = 0;
-
-
     public int CurrentMana { get => playerMana.currentValue; set => playerMana.SetValue(value); }
-
     public string GUID => GetComponent<DataGUID>().guid;
 
     private void Start()
@@ -38,7 +33,7 @@ public class Player : CharacterBase, ISavable
     public void NewRoomEvent()
     {
         manaIncrementCounter = 0;
-        playerMana.maxValue = maxMana;
+        playerMana.maxValue = characterData.mana;
         RefreshProperty();
     }
 
